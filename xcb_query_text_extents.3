@@ -1,0 +1,75 @@
+.TH xcb_query_text_extents 3  today "XCB" "X C Bindings"
+.ad l
+.SH NAME
+xcb_query_text_extents \- get text extents
+.SH SYNOPSIS
+.hy 0
+.B #include <xcb/xproto.h>
+.SS Request function
+.HP
+xcb_query_text_extents_cookie_t \fBxcb_query_text_extents\fP(xcb_connection_t *\fIconn\fP, xcb_fontable_t \fIfont\fP, uint32_t \fIstring_len\fP, const xcb_char2b_t *\fIstring\fP);
+.PP
+.SS Reply datastructure
+.nf
+.sp
+typedef struct xcb_query_text_extents_reply_t {
+    uint8_t  \fIresponse_type\fP;
+    uint8_t  \fIdraw_direction\fP;
+    uint16_t \fIsequence\fP;
+    uint32_t \fIlength\fP;
+    int16_t  \fIfont_ascent\fP;
+    int16_t  \fIfont_descent\fP;
+    int16_t  \fIoverall_ascent\fP;
+    int16_t  \fIoverall_descent\fP;
+    int32_t  \fIoverall_width\fP;
+    int32_t  \fIoverall_left\fP;
+    int32_t  \fIoverall_right\fP;
+} \fBxcb_query_text_extents_reply_t\fP;
+.fi
+.SS Reply function
+.HP
+xcb_query_text_extents_reply_t *\fBxcb_query_text_extents_reply\fP(xcb_connection_t *\fIconn\fP, xcb_query_text_extents_cookie_t \fIcookie\fP, xcb_generic_error_t **\fIe\fP);
+.br
+.hy 1
+.SH REQUEST ARGUMENTS
+.IP \fIconn\fP 1i
+The XCB connection to X11.
+.IP \fIfont\fP 1i
+The \fIfont\fP to calculate text extents in. You can also pass a graphics context.
+.IP \fIstring_len\fP 1i
+The number of characters in \fIstring\fP.
+.IP \fIstring\fP 1i
+The text to get text extents for.
+.SH DESCRIPTION
+Query text extents from the X11 server. This request returns the bounding box
+of the specified 16-bit character string in the specified \fIfont\fP or the font
+contained in the specified graphics context.
+
+\fIfont_ascent\fP is set to the maximum of the ascent metrics of all characters in
+the string. \fIfont_descent\fP is set to the maximum of the descent metrics.
+\fIoverall_width\fP is set to the sum of the character-width metrics of all
+characters in the string. For each character in the string, let W be the sum of
+the character-width metrics of all characters preceding it in the string. Let L
+be the left-side-bearing metric of the character plus W. Let R be the
+right-side-bearing metric of the character plus W. The lbearing member is set
+to the minimum L of all characters in the string. The rbearing member is set to
+the maximum R.
+
+For fonts defined with linear indexing rather than 2-byte matrix indexing, each
+\fIxcb_char2b_t\fP structure is interpreted as a 16-bit number with byte1 as the
+most significant byte. If the font has no defined default character, undefined
+characters in the string are taken to have all zero metrics.
+
+Characters with all zero metrics are ignored. If the font has no defined
+default_char, the undefined characters in the string are also ignored.
+.SH RETURN VALUE
+TODO: not yet generated
+.SH ERRORS
+.IP \fIxcb_font_error_t\fP 1i
+The specified \fIfont\fP does not exist.
+.IP \fIxcb_gc_error_t\fP 1i
+The specified graphics context does not exist.
+.SH SEE ALSO
+
+.SH AUTHOR
+Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

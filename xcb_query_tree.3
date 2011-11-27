@@ -1,0 +1,77 @@
+.TH xcb_query_tree 3  today "XCB" "X C Bindings"
+.ad l
+.SH NAME
+xcb_query_tree \- query the window tree
+.SH SYNOPSIS
+.hy 0
+.B #include <xcb/xproto.h>
+.SS Request function
+.HP
+xcb_query_tree_cookie_t \fBxcb_query_tree\fP(xcb_connection_t *\fIconn\fP, xcb_window_t \fIwindow\fP);
+.PP
+.SS Reply datastructure
+.nf
+.sp
+typedef struct xcb_query_tree_reply_t {
+    uint8_t      \fIresponse_type\fP;
+    uint8_t      \fIpad0\fP;
+    uint16_t     \fIsequence\fP;
+    uint32_t     \fIlength\fP;
+    xcb_window_t \fIroot\fP;
+    xcb_window_t \fIparent\fP;
+    uint16_t     \fIchildren_len\fP;
+    uint8_t      \fIpad1\fP[14];
+} \fBxcb_query_tree_reply_t\fP;
+.fi
+.SS Reply function
+.HP
+xcb_query_tree_reply_t *\fBxcb_query_tree_reply\fP(xcb_connection_t *\fIconn\fP, xcb_query_tree_cookie_t \fIcookie\fP, xcb_generic_error_t **\fIe\fP);
+.SS Reply accesors
+.HP
+xcb_window_t *\fBxcb_query_tree_children\fP(const xcb_query_tree_request_t *\fIreply\fP);
+.HP
+int \fBxcb_query_tree_children_length\fP(const xcb_query_tree_reply_t *\fIreply\fP);
+.HP
+xcb_generic_iterator_t \fBxcb_query_tree_children_end\fP(const xcb_query_tree_reply_t *\fIreply\fP);
+.br
+.hy 1
+.SH REQUEST ARGUMENTS
+.IP \fIconn\fP 1i
+The XCB connection to X11.
+.IP \fIwindow\fP 1i
+The \fIwindow\fP to query.
+.SH DESCRIPTION
+Gets the root window ID, parent window ID and list of children windows for the
+specified \fIwindow\fP.
+.SH RETURN VALUE
+TODO: not yet generated
+.SH ERRORS
+This request does never generate any errors.
+.SH EXAMPLE
+.nf
+.sp
+/*
+ * Displays the root, parent and children of the specified window.
+ *
+ */
+void my_example(xcb_connection *conn, xcb_window_t window) {
+    xcb_query_tree_cookie_t cookie;
+    xcb_query_tree_reply_t *reply;
+
+    cookie = xcb_query_tree(conn, window);
+    if ((reply = xcb_query_tree_reply(conn, cookie, NULL))) {
+        printf("root = 0x%08x\\n", reply->root);
+        printf("parent = 0x%08x\\n", reply->parent);
+
+        xcb_window_t *children = xcb_query_tree_children(reply);
+        for (int i = 0; i < xcb_query_tree_children_length(reply); i++)
+            printf("child window = 0x%08x\\n", children[i]);
+
+        free(reply);
+    }
+}
+.fi
+.SH SEE ALSO
+.BR xwininfo (1)
+.SH AUTHOR
+Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

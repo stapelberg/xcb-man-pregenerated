@@ -1,0 +1,57 @@
+.TH xcb_query_extension 3  today "XCB" "X C Bindings"
+.ad l
+.SH NAME
+xcb_query_extension \- check if extension is present
+.SH SYNOPSIS
+.hy 0
+.B #include <xcb/xproto.h>
+.SS Request function
+.HP
+xcb_query_extension_cookie_t \fBxcb_query_extension\fP(xcb_connection_t *\fIconn\fP, uint16_t \fIname_len\fP, const char *\fIname\fP);
+.PP
+.SS Reply datastructure
+.nf
+.sp
+typedef struct xcb_query_extension_reply_t {
+    uint8_t  \fIresponse_type\fP;
+    uint8_t  \fIpad0\fP;
+    uint16_t \fIsequence\fP;
+    uint32_t \fIlength\fP;
+    uint8_t  \fIpresent\fP;
+    uint8_t  \fImajor_opcode\fP;
+    uint8_t  \fIfirst_event\fP;
+    uint8_t  \fIfirst_error\fP;
+} \fBxcb_query_extension_reply_t\fP;
+.fi
+.SS Reply function
+.HP
+xcb_query_extension_reply_t *\fBxcb_query_extension_reply\fP(xcb_connection_t *\fIconn\fP, xcb_query_extension_cookie_t \fIcookie\fP, xcb_generic_error_t **\fIe\fP);
+.br
+.hy 1
+.SH REQUEST ARGUMENTS
+.IP \fIconn\fP 1i
+The XCB connection to X11.
+.IP \fIname_len\fP 1i
+The length of \fIname\fP in bytes.
+.IP \fIname\fP 1i
+The name of the extension to query, for example "RANDR". This is case
+sensitive!
+.SH DESCRIPTION
+Determines if the specified extension is present on this X11 server.
+
+Every extension has a unique \fImajor_opcode\fP to identify requests, the minor
+opcodes and request formats are extension-specific. If the extension provides
+events and errors, the \fIfirst_event\fP and \fIfirst_error\fP fields in the reply are
+set accordingly.
+
+There should rarely be a need to use this request directly, XCB provides the
+\fIxcb_get_extension_data\fP function instead.
+.SH RETURN VALUE
+TODO: not yet generated
+.SH ERRORS
+This request does never generate any errors.
+.SH SEE ALSO
+.BR xdpyinfo (1),
+.BR xcb_get_extension_data (3)
+.SH AUTHOR
+Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.
