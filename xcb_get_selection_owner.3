@@ -1,0 +1,45 @@
+.TH xcb_get_selection_owner 3  today "XCB" "X C Bindings"
+.ad l
+.SH NAME
+xcb_get_selection_owner \- Gets the owner of a selection
+.SH SYNOPSIS
+.hy 0
+.B #include <xcb/xproto.h>
+.SS Request function
+.HP
+xcb_get_selection_owner_cookie_t \fBxcb_get_selection_owner\fP(xcb_connection_t *\fIconn\fP, xcb_atom_t \fIselection\fP);
+.PP
+.SS Reply datastructure
+.nf
+.sp
+typedef struct xcb_get_selection_owner_reply_t {
+    uint8_t      \fIresponse_type\fP;
+    uint8_t      \fIpad0\fP;
+    uint16_t     \fIsequence\fP;
+    uint32_t     \fIlength\fP;
+    xcb_window_t \fIowner\fP;
+} \fBxcb_get_selection_owner_reply_t\fP;
+.fi
+.SS Reply function
+.HP
+xcb_get_selection_owner_reply_t *\fBxcb_get_selection_owner_reply\fP(xcb_connection_t *\fIconn\fP, xcb_get_selection_owner_cookie_t \fIcookie\fP, xcb_generic_error_t **\fIe\fP);
+.br
+.hy 1
+.SH REQUEST ARGUMENTS
+.IP \fIconn\fP 1i
+The XCB connection to X11.
+.IP \fIselection\fP 1i
+The selection.
+.SH DESCRIPTION
+Gets the owner of the specified selection.
+
+TODO: briefly explain what a selection is.
+.SH RETURN VALUE
+TODO: not yet generated
+.SH ERRORS
+.IP \fIxcb_atom_error_t\fP 1i
+\fIselection\fP does not refer to a valid atom.
+.SH SEE ALSO
+.BR xcb_set_selection_owner (3)
+.SH AUTHOR
+Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

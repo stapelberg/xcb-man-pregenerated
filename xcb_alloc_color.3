@@ -1,0 +1,57 @@
+.TH xcb_alloc_color 3  today "XCB" "X C Bindings"
+.ad l
+.SH NAME
+xcb_alloc_color \- Allocate a color
+.SH SYNOPSIS
+.hy 0
+.B #include <xcb/xproto.h>
+.SS Request function
+.HP
+xcb_alloc_color_cookie_t \fBxcb_alloc_color\fP(xcb_connection_t *\fIconn\fP, xcb_colormap_t \fIcmap\fP, uint16_t \fIred\fP, uint16_t \fIgreen\fP, uint16_t \fIblue\fP);
+.PP
+.SS Reply datastructure
+.nf
+.sp
+typedef struct xcb_alloc_color_reply_t {
+    uint8_t  \fIresponse_type\fP;
+    uint8_t  \fIpad0\fP;
+    uint16_t \fIsequence\fP;
+    uint32_t \fIlength\fP;
+    uint16_t \fIred\fP;
+    uint16_t \fIgreen\fP;
+    uint16_t \fIblue\fP;
+    uint8_t  \fIpad1\fP[2];
+    uint32_t \fIpixel\fP;
+} \fBxcb_alloc_color_reply_t\fP;
+.fi
+.SS Reply function
+.HP
+xcb_alloc_color_reply_t *\fBxcb_alloc_color_reply\fP(xcb_connection_t *\fIconn\fP, xcb_alloc_color_cookie_t \fIcookie\fP, xcb_generic_error_t **\fIe\fP);
+.br
+.hy 1
+.SH REQUEST ARGUMENTS
+.IP \fIconn\fP 1i
+The XCB connection to X11.
+.IP \fIcmap\fP 1i
+TODO
+.IP \fIred\fP 1i
+The red value of your color.
+.IP \fIgreen\fP 1i
+The green value of your color.
+.IP \fIblue\fP 1i
+The blue value of your color.
+.SH DESCRIPTION
+Allocates a read-only colormap entry corresponding to the closest RGB value
+supported by the hardware. If you are using TrueColor, you can take a shortcut
+and directly calculate the color pixel value to avoid the round trip. But, for
+example, on 16-bit color setups (VNC), you can easily get the closest supported
+RGB value to the RGB value you are specifying.
+.SH RETURN VALUE
+TODO: not yet generated
+.SH ERRORS
+.IP \fIxcb_color_error_t\fP 1i
+The specified colormap \fIcmap\fP does not exist.
+.SH SEE ALSO
+
+.SH AUTHOR
+Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

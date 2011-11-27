@@ -1,0 +1,34 @@
+.TH xcb_unmap_window 3  today "XCB" "X C Bindings"
+.ad l
+.SH NAME
+xcb_unmap_window \- Makes a window invisible
+.SH SYNOPSIS
+.hy 0
+.B #include <xcb/xproto.h>
+.SS Request function
+.HP
+xcb_void_cookie_t \fBxcb_unmap_window\fP(xcb_connection_t *\fIconn\fP, xcb_window_t \fIwindow\fP);
+.br
+.hy 1
+.SH REQUEST ARGUMENTS
+.IP \fIconn\fP 1i
+The XCB connection to X11.
+.IP \fIwindow\fP 1i
+The window to make invisible.
+.SH DESCRIPTION
+Unmaps the specified window. This means making the window invisible (and all
+its child windows).
+
+Unmapping a window leads to the \fIUnmapNotify\fP event being generated. Also,
+\fIExpose\fP events are generated for formerly obscured windows.
+.SH RETURN VALUE
+TODO: not yet generated
+.SH ERRORS
+.IP \fIxcb_window_error_t\fP 1i
+The specified window does not exist.
+.SH SEE ALSO
+.BR xcb_unmap_notify_event_t (3),
+.BR xcb_expose_event_t (3),
+.BR xcb_map_window (3)
+.SH AUTHOR
+Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

@@ -1,0 +1,73 @@
+.TH xcb_intern_atom 3  today "XCB" "X C Bindings"
+.ad l
+.SH NAME
+xcb_intern_atom \- Get atom identifier by name
+.SH SYNOPSIS
+.hy 0
+.B #include <xcb/xproto.h>
+.SS Request function
+.HP
+xcb_intern_atom_cookie_t \fBxcb_intern_atom\fP(xcb_connection_t *\fIconn\fP, uint8_t \fIonly_if_exists\fP, uint16_t \fIname_len\fP, const char *\fIname\fP);
+.PP
+.SS Reply datastructure
+.nf
+.sp
+typedef struct xcb_intern_atom_reply_t {
+    uint8_t    \fIresponse_type\fP;
+    uint8_t    \fIpad0\fP;
+    uint16_t   \fIsequence\fP;
+    uint32_t   \fIlength\fP;
+    xcb_atom_t \fIatom\fP;
+} \fBxcb_intern_atom_reply_t\fP;
+.fi
+.SS Reply function
+.HP
+xcb_intern_atom_reply_t *\fBxcb_intern_atom_reply\fP(xcb_connection_t *\fIconn\fP, xcb_intern_atom_cookie_t \fIcookie\fP, xcb_generic_error_t **\fIe\fP);
+.br
+.hy 1
+.SH REQUEST ARGUMENTS
+.IP \fIconn\fP 1i
+The XCB connection to X11.
+.IP \fIonly_if_exists\fP 1i
+Create the atom (0) or return an error (1) if the specified atom does not exist already.
+.IP \fIname_len\fP 1i
+The length of the following \fIname\fP.
+.IP \fIname\fP 1i
+The name of the atom.
+.SH DESCRIPTION
+Retrieves the identifier (xcb_atom_t TODO) for the atom with the specified
+name. Atoms are used in protocols like EWMH, for example to store window titles
+(\fI_NET_WM_NAME\fP atom) as property of a window.
+
+If \fIonly_if_exists\fP is 0, the atom will be created. If \fIonly_if_exists\fP is 1,
+you will get an error (TODO).
+.SH RETURN VALUE
+TODO: not yet generated
+.SH ERRORS
+.IP \fIxcb_alloc_error_t\fP 1i
+TODO: reasons?
+.IP \fIxcb_value_error_t\fP 1i
+TODO: reasons?
+.SH EXAMPLE
+.nf
+.sp
+/*
+ * Resolves the _NET_WM_NAME atom.
+ *
+ */
+void my_example(xcb_connection *c) {
+    xcb_intern_atom_cookie_t cookie;
+    xcb_intern_atom_reply_t *reply;
+
+    cookie = xcb_intern_atom(c, 0, strlen("_NET_WM_NAME"), "_NET_WM_NAME");
+    /* ... do other work here if possible ... */
+    if ((reply = xcb_intern_atom_reply(c, cookie, NULL))) {
+        printf("The _NET_WM_NAME atom has ID %u\n", reply->atom);
+    }
+    free(reply);
+}
+.fi
+.SH SEE ALSO
+.BR xlsatoms (1)
+.SH AUTHOR
+Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

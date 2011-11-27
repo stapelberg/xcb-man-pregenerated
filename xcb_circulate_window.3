@@ -1,0 +1,45 @@
+.TH xcb_circulate_window 3  today "XCB" "X C Bindings"
+.ad l
+.SH NAME
+xcb_circulate_window \- Change window stacking order
+.SH SYNOPSIS
+.hy 0
+.B #include <xcb/xproto.h>
+.SS Request function
+.HP
+xcb_void_cookie_t \fBxcb_circulate_window\fP(xcb_connection_t *\fIconn\fP, uint8_t \fIdirection\fP, xcb_window_t \fIwindow\fP);
+.br
+.hy 1
+.SH REQUEST ARGUMENTS
+.IP \fIconn\fP 1i
+The XCB connection to X11.
+.IP \fIdirection\fP 1i
+One of the following values:
+.RS 1i
+.IP \fIXCB_CIRCULATE_RAISE_LOWEST\fP 1i
+blah blah.
+.IP \fIXCB_CIRCULATE_LOWER_HIGHEST\fP 1i
+blah blah.
+.RE
+.RS 1i
+
+.RE
+.IP \fIwindow\fP 1i
+The window to raise/lower (depending on \fIdirection\fP).
+.SH DESCRIPTION
+If \fIdirection\fP is \fIXCB_CIRCULATE_RAISE_LOWEST\fP, the lowest mapped child (if
+any) will be raised to the top of the stack.
+
+If \fIdirection\fP is \fIXCB_CIRCULATE_LOWER_HIGHEST\fP, the highest mapped child will
+be lowered to the bottom of the stack.
+.SH RETURN VALUE
+TODO: not yet generated
+.SH ERRORS
+.IP \fIxcb_window_error_t\fP 1i
+The specified \fIwindow\fP does not exist.
+.IP \fIxcb_value_error_t\fP 1i
+The specified \fIdirection\fP is invalid.
+.SH SEE ALSO
+
+.SH AUTHOR
+Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

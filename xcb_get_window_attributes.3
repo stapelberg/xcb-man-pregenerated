@@ -1,0 +1,59 @@
+.TH xcb_get_window_attributes 3  today "XCB" "X C Bindings"
+.ad l
+.SH NAME
+xcb_get_window_attributes \- Gets window attributes
+.SH SYNOPSIS
+.hy 0
+.B #include <xcb/xproto.h>
+.SS Request function
+.HP
+xcb_get_window_attributes_cookie_t \fBxcb_get_window_attributes\fP(xcb_connection_t *\fIconn\fP, xcb_window_t \fIwindow\fP);
+.PP
+.SS Reply datastructure
+.nf
+.sp
+typedef struct xcb_get_window_attributes_reply_t {
+    uint8_t        \fIresponse_type\fP;
+    uint8_t        \fIbacking_store\fP;
+    uint16_t       \fIsequence\fP;
+    uint32_t       \fIlength\fP;
+    xcb_visualid_t \fIvisual\fP;
+    uint16_t       \fI_class\fP;
+    uint8_t        \fIbit_gravity\fP;
+    uint8_t        \fIwin_gravity\fP;
+    uint32_t       \fIbacking_planes\fP;
+    uint32_t       \fIbacking_pixel\fP;
+    uint8_t        \fIsave_under\fP;
+    uint8_t        \fImap_is_installed\fP;
+    uint8_t        \fImap_state\fP;
+    uint8_t        \fIoverride_redirect\fP;
+    xcb_colormap_t \fIcolormap\fP;
+    uint32_t       \fIall_event_masks\fP;
+    uint32_t       \fIyour_event_mask\fP;
+    uint16_t       \fIdo_not_propagate_mask\fP;
+    uint8_t        \fIpad0\fP[2];
+} \fBxcb_get_window_attributes_reply_t\fP;
+.fi
+.SS Reply function
+.HP
+xcb_get_window_attributes_reply_t *\fBxcb_get_window_attributes_reply\fP(xcb_connection_t *\fIconn\fP, xcb_get_window_attributes_cookie_t \fIcookie\fP, xcb_generic_error_t **\fIe\fP);
+.br
+.hy 1
+.SH REQUEST ARGUMENTS
+.IP \fIconn\fP 1i
+The XCB connection to X11.
+.IP \fIwindow\fP 1i
+The window to get the attributes from.
+.SH DESCRIPTION
+Gets the current attributes for the specified \fIwindow\fP.
+.SH RETURN VALUE
+TODO: not yet generated
+.SH ERRORS
+.IP \fIxcb_window_error_t\fP 1i
+The specified \fIwindow\fP does not exist.
+.IP \fIxcb_drawable_error_t\fP 1i
+TODO: reasons?
+.SH SEE ALSO
+
+.SH AUTHOR
+Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

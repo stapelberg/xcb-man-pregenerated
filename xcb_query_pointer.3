@@ -1,0 +1,52 @@
+.TH xcb_query_pointer 3  today "XCB" "X C Bindings"
+.ad l
+.SH NAME
+xcb_query_pointer \- get pointer coordinates
+.SH SYNOPSIS
+.hy 0
+.B #include <xcb/xproto.h>
+.SS Request function
+.HP
+xcb_query_pointer_cookie_t \fBxcb_query_pointer\fP(xcb_connection_t *\fIconn\fP, xcb_window_t \fIwindow\fP);
+.PP
+.SS Reply datastructure
+.nf
+.sp
+typedef struct xcb_query_pointer_reply_t {
+    uint8_t      \fIresponse_type\fP;
+    uint8_t      \fIsame_screen\fP;
+    uint16_t     \fIsequence\fP;
+    uint32_t     \fIlength\fP;
+    xcb_window_t \fIroot\fP;
+    xcb_window_t \fIchild\fP;
+    int16_t      \fIroot_x\fP;
+    int16_t      \fIroot_y\fP;
+    int16_t      \fIwin_x\fP;
+    int16_t      \fIwin_y\fP;
+    uint16_t     \fImask\fP;
+    uint8_t      \fIpad0\fP[2];
+} \fBxcb_query_pointer_reply_t\fP;
+.fi
+.SS Reply function
+.HP
+xcb_query_pointer_reply_t *\fBxcb_query_pointer_reply\fP(xcb_connection_t *\fIconn\fP, xcb_query_pointer_cookie_t \fIcookie\fP, xcb_generic_error_t **\fIe\fP);
+.br
+.hy 1
+.SH REQUEST ARGUMENTS
+.IP \fIconn\fP 1i
+The XCB connection to X11.
+.IP \fIwindow\fP 1i
+A window to check if the pointer is on the same screen as \fIwindow\fP (see the
+\fIsame_screen\fP field in the reply).
+.SH DESCRIPTION
+Gets the root window the pointer is logically on and the pointer coordinates
+relative to the root window's origin.
+.SH RETURN VALUE
+TODO: not yet generated
+.SH ERRORS
+.IP \fIxcb_window_error_t\fP 1i
+The specified \fIwindow\fP does not exist.
+.SH SEE ALSO
+
+.SH AUTHOR
+Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

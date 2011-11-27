@@ -1,0 +1,44 @@
+.TH xcb_set_selection_owner 3  today "XCB" "X C Bindings"
+.ad l
+.SH NAME
+xcb_set_selection_owner \- Sets the owner of a selection
+.SH SYNOPSIS
+.hy 0
+.B #include <xcb/xproto.h>
+.SS Request function
+.HP
+xcb_void_cookie_t \fBxcb_set_selection_owner\fP(xcb_connection_t *\fIconn\fP, xcb_window_t \fIowner\fP, xcb_atom_t \fIselection\fP, xcb_timestamp_t \fItime\fP);
+.br
+.hy 1
+.SH REQUEST ARGUMENTS
+.IP \fIconn\fP 1i
+The XCB connection to X11.
+.IP \fIowner\fP 1i
+The new owner of the selection.
+
+The special value \fIXCB_NONE\fP means that the selection will have no owner.
+.IP \fIselection\fP 1i
+The selection.
+.IP \fItime\fP 1i
+Timestamp to avoid race conditions when running X over the network.
+
+The selection will not be changed if \fItime\fP is earlier than the current
+last-change time of the \fIselection\fP or is later than the current X server time.
+Otherwise, the last-change time is set to the specified time.
+
+The special value \fIXCB_CURRENT_TIME\fP will be replaced with the current server
+time.
+.SH DESCRIPTION
+Makes \fIwindow\fP the owner of the selection \fIselection\fP and updates the
+last-change time of the specified selection.
+
+TODO: briefly explain what a selection is.
+.SH RETURN VALUE
+TODO: not yet generated
+.SH ERRORS
+.IP \fIxcb_atom_error_t\fP 1i
+\fIselection\fP does not refer to a valid atom.
+.SH SEE ALSO
+.BR xcb_set_selection_owner (3)
+.SH AUTHOR
+Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.
