@@ -1,0 +1,77 @@
+.TH xcb_list_fonts_with_info 3  today "XCB" "X C Bindings"
+.ad l
+.SH NAME
+xcb_list_fonts_with_info \- get matching font names and information
+.SH SYNOPSIS
+.hy 0
+.B #include <xcb/xproto.h>
+.SS Request function
+.HP
+xcb_list_fonts_with_info_cookie_t \fBxcb_list_fonts_with_info\fP(xcb_connection_t *\fIconn\fP, uint16_t \fImax_names\fP, uint16_t \fIpattern_len\fP, const char *\fIpattern\fP);
+.PP
+.SS Reply datastructure
+.nf
+.sp
+typedef struct xcb_list_fonts_with_info_reply_t {
+    uint8_t        \fIresponse_type\fP;
+    uint8_t        \fIname_len\fP;
+    uint16_t       \fIsequence\fP;
+    uint32_t       \fIlength\fP;
+    xcb_charinfo_t \fImin_bounds\fP;
+    uint8_t        \fIpad0\fP[4];
+    xcb_charinfo_t \fImax_bounds\fP;
+    uint8_t        \fIpad1\fP[4];
+    uint16_t       \fImin_char_or_byte2\fP;
+    uint16_t       \fImax_char_or_byte2\fP;
+    uint16_t       \fIdefault_char\fP;
+    uint16_t       \fIproperties_len\fP;
+    uint8_t        \fIdraw_direction\fP;
+    uint8_t        \fImin_byte1\fP;
+    uint8_t        \fImax_byte1\fP;
+    uint8_t        \fIall_chars_exist\fP;
+    int16_t        \fIfont_ascent\fP;
+    int16_t        \fIfont_descent\fP;
+    uint32_t       \fIreplies_hint\fP;
+} \fBxcb_list_fonts_with_info_reply_t\fP;
+.fi
+.SS Reply function
+.HP
+xcb_list_fonts_with_info_reply_t *\fBxcb_list_fonts_with_info_reply\fP(xcb_connection_t *\fIconn\fP, xcb_list_fonts_with_info_cookie_t \fIcookie\fP, xcb_generic_error_t **\fIe\fP);
+.SS Reply accesors
+.HP
+xcb_fontprop_t *\fBxcb_list_fonts_with_info_properties\fP(const xcb_list_fonts_with_info_request_t *\fIreply\fP);
+.HP
+int \fBxcb_list_fonts_with_info_properties_length\fP(const xcb_list_fonts_with_info_reply_t *\fIreply\fP);
+.HP
+xcb_fontprop_iterator_t \fBxcb_list_fonts_with_info_properties_iterator\fP(const xcb_list_fonts_with_info_reply_t *\fIreply\fP);
+.HP
+char *\fBxcb_list_fonts_with_info_name\fP(const xcb_list_fonts_with_info_request_t *\fIreply\fP);
+.HP
+int \fBxcb_list_fonts_with_info_name_length\fP(const xcb_list_fonts_with_info_reply_t *\fIreply\fP);
+.HP
+xcb_generic_iterator_t \fBxcb_list_fonts_with_info_name_end\fP(const xcb_list_fonts_with_info_reply_t *\fIreply\fP);
+.br
+.hy 1
+.SH REQUEST ARGUMENTS
+.IP \fIconn\fP 1i
+The XCB connection to X11.
+.IP \fImax_names\fP 1i
+The maximum number of fonts to be returned.
+.IP \fIpattern_len\fP 1i
+The length (in bytes) of \fIpattern\fP.
+.IP \fIpattern\fP 1i
+A font pattern, for example "-misc-fixed-*".
+
+The asterisk (*) is a wildcard for any number of characters. The question mark
+(?) is a wildcard for a single character. Use of uppercase or lowercase does
+not matter.
+.SH DESCRIPTION
+Gets a list of available font names which match the given \fIpattern\fP.
+.SH RETURN VALUE
+TODO: not yet generated
+.SH ERRORS
+This request does never generate any errors.
+.SH SEE ALSO
+
+.SH AUTHOR
+Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.
