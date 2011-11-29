@@ -1,4 +1,4 @@
-.TH xcb_configure_window 3  today "XCB" "X C Bindings"
+.TH xcb_configure_window 3  today "XCB" "XCB Requests"
 .ad l
 .SH NAME
 xcb_configure_window \- Configures window attributes
@@ -7,7 +7,7 @@ xcb_configure_window \- Configures window attributes
 .B #include <xcb/xproto.h>
 .SS Request function
 .HP
-xcb_void_cookie_t \fBxcb_configure_window\fP(xcb_connection_t *\fIconn\fP, xcb_window_t \fIwindow\fP, uint16_t \fIvalue_mask\fP, const uint32_t *\fIvalue_list\fP);
+xcb_void_cookie_t \fBxcb_configure_window\fP(xcb_connection_t\ *\fIconn\fP, xcb_window_t\ \fIwindow\fP, uint16_t\ \fIvalue_mask\fP, const uint32_t\ *\fIvalue_list\fP);
 .br
 .hy 1
 .SH REQUEST ARGUMENTS
@@ -18,7 +18,8 @@ The window to configure.
 .IP \fIvalue_mask\fP 1i
 Bitmask of attributes to change.
 .IP \fIvalue_list\fP 1i
-New values, corresponding to the attributes in value_mask.
+New values, corresponding to the attributes in value_mask. The order has to
+correspond to the order of possible \fIvalue_mask\fP bits. See the example.
 .SH DESCRIPTION
 Configures a window's size, position, border width and stacking order.
 .SH RETURN VALUE

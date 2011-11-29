@@ -1,4 +1,4 @@
-.TH xcb_poly_line 3  today "XCB" "X C Bindings"
+.TH xcb_poly_line 3  today "XCB" "XCB Requests"
 .ad l
 .SH NAME
 xcb_poly_line \- draw lines
@@ -7,7 +7,7 @@ xcb_poly_line \- draw lines
 .B #include <xcb/xproto.h>
 .SS Request function
 .HP
-xcb_void_cookie_t \fBxcb_poly_line\fP(xcb_connection_t *\fIconn\fP, uint8_t \fIcoordinate_mode\fP, xcb_drawable_t \fIdrawable\fP, xcb_gcontext_t \fIgc\fP, uint32_t \fIpoints_len\fP, const xcb_point_t *\fIpoints\fP);
+xcb_void_cookie_t \fBxcb_poly_line\fP(xcb_connection_t\ *\fIconn\fP, uint8_t\ \fIcoordinate_mode\fP, xcb_drawable_t\ \fIdrawable\fP, xcb_gcontext_t\ \fIgc\fP, uint32_t\ \fIpoints_len\fP, const xcb_point_t\ *\fIpoints\fP);
 .br
 .hy 1
 .SH REQUEST ARGUMENTS
@@ -22,6 +22,7 @@ Treats all coordinates as relative to the origin.
 Treats all coordinates after the first as relative to the previous coordinate.
 .RE
 .RS 1i
+
 
 .RE
 .IP \fIdrawable\fP 1i

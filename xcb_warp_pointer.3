@@ -1,4 +1,4 @@
-.TH xcb_warp_pointer 3  today "XCB" "X C Bindings"
+.TH xcb_warp_pointer 3  today "XCB" "XCB Requests"
 .ad l
 .SH NAME
 xcb_warp_pointer \- move mouse pointer
@@ -7,7 +7,7 @@ xcb_warp_pointer \- move mouse pointer
 .B #include <xcb/xproto.h>
 .SS Request function
 .HP
-xcb_void_cookie_t \fBxcb_warp_pointer\fP(xcb_connection_t *\fIconn\fP, xcb_window_t \fIsrc_window\fP, xcb_window_t \fIdst_window\fP, int16_t \fIsrc_x\fP, int16_t \fIsrc_y\fP, uint16_t \fIsrc_width\fP, uint16_t \fIsrc_height\fP, int16_t \fIdst_x\fP, int16_t \fIdst_y\fP);
+xcb_void_cookie_t \fBxcb_warp_pointer\fP(xcb_connection_t\ *\fIconn\fP, xcb_window_t\ \fIsrc_window\fP, xcb_window_t\ \fIdst_window\fP, int16_t\ \fIsrc_x\fP, int16_t\ \fIsrc_y\fP, uint16_t\ \fIsrc_width\fP, uint16_t\ \fIsrc_height\fP, int16_t\ \fIdst_x\fP, int16_t\ \fIdst_y\fP);
 .br
 .hy 1
 .SH REQUEST ARGUMENTS
@@ -24,17 +24,17 @@ offsets (\fIdst_x\fP, \fIdst_y\fP) relative to \fIdst_window\fP. If \fIdst_windo
 \fIXCB_NONE\fP (TODO), the pointer will be moved by the offsets (\fIdst_x\fP, \fIdst_y\fP)
 relative to the current position of the pointer.
 .IP \fIsrc_x\fP 1i
-NOT YET DOCUMENTED.
+TODO: NOT YET DOCUMENTED.
 .IP \fIsrc_y\fP 1i
-NOT YET DOCUMENTED.
+TODO: NOT YET DOCUMENTED.
 .IP \fIsrc_width\fP 1i
-NOT YET DOCUMENTED.
+TODO: NOT YET DOCUMENTED.
 .IP \fIsrc_height\fP 1i
-NOT YET DOCUMENTED.
+TODO: NOT YET DOCUMENTED.
 .IP \fIdst_x\fP 1i
-NOT YET DOCUMENTED.
+TODO: NOT YET DOCUMENTED.
 .IP \fIdst_y\fP 1i
-NOT YET DOCUMENTED.
+TODO: NOT YET DOCUMENTED.
 .SH DESCRIPTION
 Moves the mouse pointer to the specified position.
 

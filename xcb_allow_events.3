@@ -1,4 +1,4 @@
-.TH xcb_allow_events 3  today "XCB" "X C Bindings"
+.TH xcb_allow_events 3  today "XCB" "XCB Requests"
 .ad l
 .SH NAME
 xcb_allow_events \- release queued events
@@ -7,7 +7,7 @@ xcb_allow_events \- release queued events
 .B #include <xcb/xproto.h>
 .SS Request function
 .HP
-xcb_void_cookie_t \fBxcb_allow_events\fP(xcb_connection_t *\fIconn\fP, uint8_t \fImode\fP, xcb_timestamp_t \fItime\fP);
+xcb_void_cookie_t \fBxcb_allow_events\fP(xcb_connection_t\ *\fIconn\fP, uint8_t\ \fImode\fP, xcb_timestamp_t\ \fItime\fP);
 .br
 .hy 1
 .SH REQUEST ARGUMENTS
@@ -83,6 +83,7 @@ by the client on behalf of two separate grabs, SyncBoth thaws for both (but a
 subsequent freeze for SyncBoth will only freeze each device once).
 .RE
 .RS 1i
+
 
 .RE
 .IP \fItime\fP 1i

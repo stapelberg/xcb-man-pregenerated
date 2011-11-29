@@ -1,4 +1,4 @@
-.TH xcb_alloc_color 3  today "XCB" "X C Bindings"
+.TH xcb_alloc_color 3  today "XCB" "XCB Requests"
 .ad l
 .SH NAME
 xcb_alloc_color \- Allocate a color
@@ -7,7 +7,7 @@ xcb_alloc_color \- Allocate a color
 .B #include <xcb/xproto.h>
 .SS Request function
 .HP
-xcb_alloc_color_cookie_t \fBxcb_alloc_color\fP(xcb_connection_t *\fIconn\fP, xcb_colormap_t \fIcmap\fP, uint16_t \fIred\fP, uint16_t \fIgreen\fP, uint16_t \fIblue\fP);
+xcb_alloc_color_cookie_t \fBxcb_alloc_color\fP(xcb_connection_t\ *\fIconn\fP, xcb_colormap_t\ \fIcmap\fP, uint16_t\ \fIred\fP, uint16_t\ \fIgreen\fP, uint16_t\ \fIblue\fP);
 .PP
 .SS Reply datastructure
 .nf
@@ -26,7 +26,7 @@ typedef struct xcb_alloc_color_reply_t {
 .fi
 .SS Reply function
 .HP
-xcb_alloc_color_reply_t *\fBxcb_alloc_color_reply\fP(xcb_connection_t *\fIconn\fP, xcb_alloc_color_cookie_t \fIcookie\fP, xcb_generic_error_t **\fIe\fP);
+xcb_alloc_color_reply_t *\fBxcb_alloc_color_reply\fP(xcb_connection_t\ *\fIconn\fP, xcb_alloc_color_cookie_t\ \fIcookie\fP, xcb_generic_error_t\ **\fIe\fP);
 .br
 .hy 1
 .SH REQUEST ARGUMENTS

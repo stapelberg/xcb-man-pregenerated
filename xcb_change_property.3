@@ -1,4 +1,4 @@
-.TH xcb_change_property 3  today "XCB" "X C Bindings"
+.TH xcb_change_property 3  today "XCB" "XCB Requests"
 .ad l
 .SH NAME
 xcb_change_property \- Changes a window property
@@ -7,7 +7,7 @@ xcb_change_property \- Changes a window property
 .B #include <xcb/xproto.h>
 .SS Request function
 .HP
-xcb_void_cookie_t \fBxcb_change_property\fP(xcb_connection_t *\fIconn\fP, uint8_t \fImode\fP, xcb_window_t \fIwindow\fP, xcb_atom_t \fIproperty\fP, xcb_atom_t \fItype\fP, uint8_t \fIformat\fP, uint32_t \fIdata_len\fP, const void *\fIdata\fP);
+xcb_void_cookie_t \fBxcb_change_property\fP(xcb_connection_t\ *\fIconn\fP, uint8_t\ \fImode\fP, xcb_window_t\ \fIwindow\fP, xcb_atom_t\ \fIproperty\fP, xcb_atom_t\ \fItype\fP, uint8_t\ \fIformat\fP, uint32_t\ \fIdata_len\fP, const void\ *\fIdata\fP);
 .br
 .hy 1
 .SH REQUEST ARGUMENTS
@@ -28,6 +28,7 @@ match existing property value. If the property is undefined, it is treated as
 defined with the correct type and format with zero-length data.
 .RE
 .RS 1i
+
 
 .RE
 .IP \fIwindow\fP 1i

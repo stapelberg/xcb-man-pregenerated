@@ -1,4 +1,4 @@
-.TH xcb_get_property 3  today "XCB" "X C Bindings"
+.TH xcb_get_property 3  today "XCB" "XCB Requests"
 .ad l
 .SH NAME
 xcb_get_property \- Gets a window property
@@ -7,7 +7,7 @@ xcb_get_property \- Gets a window property
 .B #include <xcb/xproto.h>
 .SS Request function
 .HP
-xcb_get_property_cookie_t \fBxcb_get_property\fP(xcb_connection_t *\fIconn\fP, uint8_t \fI_delete\fP, xcb_window_t \fIwindow\fP, xcb_atom_t \fIproperty\fP, xcb_atom_t \fItype\fP, uint32_t \fIlong_offset\fP, uint32_t \fIlong_length\fP);
+xcb_get_property_cookie_t \fBxcb_get_property\fP(xcb_connection_t\ *\fIconn\fP, uint8_t\ \fI_delete\fP, xcb_window_t\ \fIwindow\fP, xcb_atom_t\ \fIproperty\fP, xcb_atom_t\ \fItype\fP, uint32_t\ \fIlong_offset\fP, uint32_t\ \fIlong_length\fP);
 .PP
 .SS Reply datastructure
 .nf
@@ -25,8 +25,8 @@ typedef struct xcb_get_property_reply_t {
 .fi
 .SS Reply function
 .HP
-xcb_get_property_reply_t *\fBxcb_get_property_reply\fP(xcb_connection_t *\fIconn\fP, xcb_get_property_cookie_t \fIcookie\fP, xcb_generic_error_t **\fIe\fP);
-.SS Reply accesors
+xcb_get_property_reply_t *\fBxcb_get_property_reply\fP(xcb_connection_t\ *\fIconn\fP, xcb_get_property_cookie_t\ \fIcookie\fP, xcb_generic_error_t\ **\fIe\fP);
+.SS Reply accessors
 .HP
 void *\fBxcb_get_property_value\fP(const xcb_get_property_request_t *\fIreply\fP);
 .HP
@@ -39,7 +39,7 @@ xcb_generic_iterator_t \fBxcb_get_property_value_end\fP(const xcb_get_property_r
 .IP \fIconn\fP 1i
 The XCB connection to X11.
 .IP \fI_delete\fP 1i
-NOT YET DOCUMENTED.
+TODO: NOT YET DOCUMENTED.
 .IP \fIwindow\fP 1i
 The window whose property you want to get.
 .IP \fIproperty\fP 1i

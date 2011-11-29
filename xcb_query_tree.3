@@ -1,4 +1,4 @@
-.TH xcb_query_tree 3  today "XCB" "X C Bindings"
+.TH xcb_query_tree 3  today "XCB" "XCB Requests"
 .ad l
 .SH NAME
 xcb_query_tree \- query the window tree
@@ -7,7 +7,7 @@ xcb_query_tree \- query the window tree
 .B #include <xcb/xproto.h>
 .SS Request function
 .HP
-xcb_query_tree_cookie_t \fBxcb_query_tree\fP(xcb_connection_t *\fIconn\fP, xcb_window_t \fIwindow\fP);
+xcb_query_tree_cookie_t \fBxcb_query_tree\fP(xcb_connection_t\ *\fIconn\fP, xcb_window_t\ \fIwindow\fP);
 .PP
 .SS Reply datastructure
 .nf
@@ -25,8 +25,8 @@ typedef struct xcb_query_tree_reply_t {
 .fi
 .SS Reply function
 .HP
-xcb_query_tree_reply_t *\fBxcb_query_tree_reply\fP(xcb_connection_t *\fIconn\fP, xcb_query_tree_cookie_t \fIcookie\fP, xcb_generic_error_t **\fIe\fP);
-.SS Reply accesors
+xcb_query_tree_reply_t *\fBxcb_query_tree_reply\fP(xcb_connection_t\ *\fIconn\fP, xcb_query_tree_cookie_t\ \fIcookie\fP, xcb_generic_error_t\ **\fIe\fP);
+.SS Reply accessors
 .HP
 xcb_window_t *\fBxcb_query_tree_children\fP(const xcb_query_tree_request_t *\fIreply\fP);
 .HP

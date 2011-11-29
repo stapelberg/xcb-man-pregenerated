@@ -1,4 +1,4 @@
-.TH xcb_create_gc 3  today "XCB" "X C Bindings"
+.TH xcb_create_gc 3  today "XCB" "XCB Requests"
 .ad l
 .SH NAME
 xcb_create_gc \- Creates a graphics context
@@ -7,7 +7,7 @@ xcb_create_gc \- Creates a graphics context
 .B #include <xcb/xproto.h>
 .SS Request function
 .HP
-xcb_void_cookie_t \fBxcb_create_gc\fP(xcb_connection_t *\fIconn\fP, xcb_gcontext_t \fIcid\fP, xcb_drawable_t \fIdrawable\fP, uint32_t \fIvalue_mask\fP, const uint32_t *\fIvalue_list\fP);
+xcb_void_cookie_t \fBxcb_create_gc\fP(xcb_connection_t\ *\fIconn\fP, xcb_gcontext_t\ \fIcid\fP, xcb_drawable_t\ \fIdrawable\fP, uint32_t\ \fIvalue_mask\fP, const uint32_t\ *\fIvalue_list\fP);
 .br
 .hy 1
 .SH REQUEST ARGUMENTS
@@ -19,9 +19,9 @@ The ID with which you will refer to the graphics context, created by
 .IP \fIdrawable\fP 1i
 Drawable to get the root/depth from.
 .IP \fIvalue_mask\fP 1i
-NOT YET DOCUMENTED.
+TODO: NOT YET DOCUMENTED.
 .IP \fIvalue_list\fP 1i
-NOT YET DOCUMENTED.
+TODO: NOT YET DOCUMENTED.
 .SH DESCRIPTION
 Creates a graphics context. The graphics context can be used with any drawable
 that has the same root and depth as the specified drawable.

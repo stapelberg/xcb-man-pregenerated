@@ -1,4 +1,4 @@
-.TH xcb_query_font 3  today "XCB" "X C Bindings"
+.TH xcb_query_font 3  today "XCB" "XCB Requests"
 .ad l
 .SH NAME
 xcb_query_font \- query font metrics
@@ -7,7 +7,7 @@ xcb_query_font \- query font metrics
 .B #include <xcb/xproto.h>
 .SS Request function
 .HP
-xcb_query_font_cookie_t \fBxcb_query_font\fP(xcb_connection_t *\fIconn\fP, xcb_fontable_t \fIfont\fP);
+xcb_query_font_cookie_t \fBxcb_query_font\fP(xcb_connection_t\ *\fIconn\fP, xcb_fontable_t\ \fIfont\fP);
 .PP
 .SS Reply datastructure
 .nf
@@ -36,8 +36,8 @@ typedef struct xcb_query_font_reply_t {
 .fi
 .SS Reply function
 .HP
-xcb_query_font_reply_t *\fBxcb_query_font_reply\fP(xcb_connection_t *\fIconn\fP, xcb_query_font_cookie_t \fIcookie\fP, xcb_generic_error_t **\fIe\fP);
-.SS Reply accesors
+xcb_query_font_reply_t *\fBxcb_query_font_reply\fP(xcb_connection_t\ *\fIconn\fP, xcb_query_font_cookie_t\ \fIcookie\fP, xcb_generic_error_t\ **\fIe\fP);
+.SS Reply accessors
 .HP
 xcb_fontprop_t *\fBxcb_query_font_properties\fP(const xcb_query_font_request_t *\fIreply\fP);
 .HP

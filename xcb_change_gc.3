@@ -1,4 +1,4 @@
-.TH xcb_change_gc 3  today "XCB" "X C Bindings"
+.TH xcb_change_gc 3  today "XCB" "XCB Requests"
 .ad l
 .SH NAME
 xcb_change_gc \- change graphics context components
@@ -7,7 +7,7 @@ xcb_change_gc \- change graphics context components
 .B #include <xcb/xproto.h>
 .SS Request function
 .HP
-xcb_void_cookie_t \fBxcb_change_gc\fP(xcb_connection_t *\fIconn\fP, xcb_gcontext_t \fIgc\fP, uint32_t \fIvalue_mask\fP, const uint32_t *\fIvalue_list\fP);
+xcb_void_cookie_t \fBxcb_change_gc\fP(xcb_connection_t\ *\fIconn\fP, xcb_gcontext_t\ \fIgc\fP, uint32_t\ \fIvalue_mask\fP, const uint32_t\ *\fIvalue_list\fP);
 .br
 .hy 1
 .SH REQUEST ARGUMENTS
@@ -140,6 +140,7 @@ TODO
 TODO
 .RE
 .RS 1i
+
 
 .RE
 .IP \fIvalue_list\fP 1i

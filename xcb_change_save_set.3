@@ -1,4 +1,4 @@
-.TH xcb_change_save_set 3  today "XCB" "X C Bindings"
+.TH xcb_change_save_set 3  today "XCB" "XCB Requests"
 .ad l
 .SH NAME
 xcb_change_save_set \- Changes a client's save set
@@ -7,7 +7,7 @@ xcb_change_save_set \- Changes a client's save set
 .B #include <xcb/xproto.h>
 .SS Request function
 .HP
-xcb_void_cookie_t \fBxcb_change_save_set\fP(xcb_connection_t *\fIconn\fP, uint8_t \fImode\fP, xcb_window_t \fIwindow\fP);
+xcb_void_cookie_t \fBxcb_change_save_set\fP(xcb_connection_t\ *\fIconn\fP, uint8_t\ \fImode\fP, xcb_window_t\ \fIwindow\fP);
 .br
 .hy 1
 .SH REQUEST ARGUMENTS
@@ -17,11 +17,12 @@ The XCB connection to X11.
 One of the following values:
 .RS 1i
 .IP \fIXCB_SET_MODE_INSERT\fP 1i
-blah blah.
+TODO: NOT YET DOCUMENTED.
 .IP \fIXCB_SET_MODE_DELETE\fP 1i
-blah blah.
+TODO: NOT YET DOCUMENTED.
 .RE
 .RS 1i
+
 Insert to add the specified window to the save set or Delete to delete it from the save set.
 .RE
 .IP \fIwindow\fP 1i

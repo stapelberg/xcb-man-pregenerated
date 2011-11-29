@@ -1,4 +1,4 @@
-.TH xcb_circulate_window 3  today "XCB" "X C Bindings"
+.TH xcb_circulate_window 3  today "XCB" "XCB Requests"
 .ad l
 .SH NAME
 xcb_circulate_window \- Change window stacking order
@@ -7,7 +7,7 @@ xcb_circulate_window \- Change window stacking order
 .B #include <xcb/xproto.h>
 .SS Request function
 .HP
-xcb_void_cookie_t \fBxcb_circulate_window\fP(xcb_connection_t *\fIconn\fP, uint8_t \fIdirection\fP, xcb_window_t \fIwindow\fP);
+xcb_void_cookie_t \fBxcb_circulate_window\fP(xcb_connection_t\ *\fIconn\fP, uint8_t\ \fIdirection\fP, xcb_window_t\ \fIwindow\fP);
 .br
 .hy 1
 .SH REQUEST ARGUMENTS
@@ -17,11 +17,12 @@ The XCB connection to X11.
 One of the following values:
 .RS 1i
 .IP \fIXCB_CIRCULATE_RAISE_LOWEST\fP 1i
-blah blah.
+TODO: NOT YET DOCUMENTED.
 .IP \fIXCB_CIRCULATE_LOWER_HIGHEST\fP 1i
-blah blah.
+TODO: NOT YET DOCUMENTED.
 .RE
 .RS 1i
+
 
 .RE
 .IP \fIwindow\fP 1i

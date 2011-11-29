@@ -1,13 +1,13 @@
-.TH xcb_copy_area 3  today "XCB" "X C Bindings"
+.TH xcb_copy_area 3  today "XCB" "XCB Requests"
 .ad l
 .SH NAME
-xcb_copy_area \- copy yareas
+xcb_copy_area \- copy areas
 .SH SYNOPSIS
 .hy 0
 .B #include <xcb/xproto.h>
 .SS Request function
 .HP
-xcb_void_cookie_t \fBxcb_copy_area\fP(xcb_connection_t *\fIconn\fP, xcb_drawable_t \fIsrc_drawable\fP, xcb_drawable_t \fIdst_drawable\fP, xcb_gcontext_t \fIgc\fP, int16_t \fIsrc_x\fP, int16_t \fIsrc_y\fP, int16_t \fIdst_x\fP, int16_t \fIdst_y\fP, uint16_t \fIwidth\fP, uint16_t \fIheight\fP);
+xcb_void_cookie_t \fBxcb_copy_area\fP(xcb_connection_t\ *\fIconn\fP, xcb_drawable_t\ \fIsrc_drawable\fP, xcb_drawable_t\ \fIdst_drawable\fP, xcb_gcontext_t\ \fIgc\fP, int16_t\ \fIsrc_x\fP, int16_t\ \fIsrc_y\fP, int16_t\ \fIdst_x\fP, int16_t\ \fIdst_y\fP, uint16_t\ \fIwidth\fP, uint16_t\ \fIheight\fP);
 .br
 .hy 1
 .SH REQUEST ARGUMENTS

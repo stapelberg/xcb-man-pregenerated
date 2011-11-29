@@ -1,4 +1,4 @@
-.TH xcb_poly_segment 3  today "XCB" "X C Bindings"
+.TH xcb_poly_segment 3  today "XCB" "XCB Requests"
 .ad l
 .SH NAME
 xcb_poly_segment \- draw lines
@@ -7,7 +7,7 @@ xcb_poly_segment \- draw lines
 .B #include <xcb/xproto.h>
 .SS Request function
 .HP
-xcb_void_cookie_t \fBxcb_poly_segment\fP(xcb_connection_t *\fIconn\fP, xcb_drawable_t \fIdrawable\fP, xcb_gcontext_t \fIgc\fP, uint32_t \fIsegments_len\fP, const xcb_segment_t *\fIsegments\fP);
+xcb_void_cookie_t \fBxcb_poly_segment\fP(xcb_connection_t\ *\fIconn\fP, xcb_drawable_t\ \fIdrawable\fP, xcb_gcontext_t\ \fIgc\fP, uint32_t\ \fIsegments_len\fP, const xcb_segment_t\ *\fIsegments\fP);
 .br
 .hy 1
 .SH REQUEST ARGUMENTS

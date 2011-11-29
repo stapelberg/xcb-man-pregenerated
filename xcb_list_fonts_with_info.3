@@ -1,4 +1,4 @@
-.TH xcb_list_fonts_with_info 3  today "XCB" "X C Bindings"
+.TH xcb_list_fonts_with_info 3  today "XCB" "XCB Requests"
 .ad l
 .SH NAME
 xcb_list_fonts_with_info \- get matching font names and information
@@ -7,7 +7,7 @@ xcb_list_fonts_with_info \- get matching font names and information
 .B #include <xcb/xproto.h>
 .SS Request function
 .HP
-xcb_list_fonts_with_info_cookie_t \fBxcb_list_fonts_with_info\fP(xcb_connection_t *\fIconn\fP, uint16_t \fImax_names\fP, uint16_t \fIpattern_len\fP, const char *\fIpattern\fP);
+xcb_list_fonts_with_info_cookie_t \fBxcb_list_fonts_with_info\fP(xcb_connection_t\ *\fIconn\fP, uint16_t\ \fImax_names\fP, uint16_t\ \fIpattern_len\fP, const char\ *\fIpattern\fP);
 .PP
 .SS Reply datastructure
 .nf
@@ -36,8 +36,8 @@ typedef struct xcb_list_fonts_with_info_reply_t {
 .fi
 .SS Reply function
 .HP
-xcb_list_fonts_with_info_reply_t *\fBxcb_list_fonts_with_info_reply\fP(xcb_connection_t *\fIconn\fP, xcb_list_fonts_with_info_cookie_t \fIcookie\fP, xcb_generic_error_t **\fIe\fP);
-.SS Reply accesors
+xcb_list_fonts_with_info_reply_t *\fBxcb_list_fonts_with_info_reply\fP(xcb_connection_t\ *\fIconn\fP, xcb_list_fonts_with_info_cookie_t\ \fIcookie\fP, xcb_generic_error_t\ **\fIe\fP);
+.SS Reply accessors
 .HP
 xcb_fontprop_t *\fBxcb_list_fonts_with_info_properties\fP(const xcb_list_fonts_with_info_request_t *\fIreply\fP);
 .HP

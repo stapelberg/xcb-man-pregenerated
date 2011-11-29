@@ -1,4 +1,4 @@
-.TH xcb_get_selection_owner 3  today "XCB" "X C Bindings"
+.TH xcb_get_selection_owner 3  today "XCB" "XCB Requests"
 .ad l
 .SH NAME
 xcb_get_selection_owner \- Gets the owner of a selection
@@ -7,7 +7,7 @@ xcb_get_selection_owner \- Gets the owner of a selection
 .B #include <xcb/xproto.h>
 .SS Request function
 .HP
-xcb_get_selection_owner_cookie_t \fBxcb_get_selection_owner\fP(xcb_connection_t *\fIconn\fP, xcb_atom_t \fIselection\fP);
+xcb_get_selection_owner_cookie_t \fBxcb_get_selection_owner\fP(xcb_connection_t\ *\fIconn\fP, xcb_atom_t\ \fIselection\fP);
 .PP
 .SS Reply datastructure
 .nf
@@ -22,7 +22,7 @@ typedef struct xcb_get_selection_owner_reply_t {
 .fi
 .SS Reply function
 .HP
-xcb_get_selection_owner_reply_t *\fBxcb_get_selection_owner_reply\fP(xcb_connection_t *\fIconn\fP, xcb_get_selection_owner_cookie_t \fIcookie\fP, xcb_generic_error_t **\fIe\fP);
+xcb_get_selection_owner_reply_t *\fBxcb_get_selection_owner_reply\fP(xcb_connection_t\ *\fIconn\fP, xcb_get_selection_owner_cookie_t\ \fIcookie\fP, xcb_generic_error_t\ **\fIe\fP);
 .br
 .hy 1
 .SH REQUEST ARGUMENTS

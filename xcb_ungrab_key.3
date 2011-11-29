@@ -1,4 +1,4 @@
-.TH xcb_ungrab_key 3  today "XCB" "X C Bindings"
+.TH xcb_ungrab_key 3  today "XCB" "XCB Requests"
 .ad l
 .SH NAME
 xcb_ungrab_key \- release a key combination
@@ -7,7 +7,7 @@ xcb_ungrab_key \- release a key combination
 .B #include <xcb/xproto.h>
 .SS Request function
 .HP
-xcb_void_cookie_t \fBxcb_ungrab_key\fP(xcb_connection_t *\fIconn\fP, xcb_keycode_t \fIkey\fP, xcb_window_t \fIgrab_window\fP, uint16_t \fImodifiers\fP);
+xcb_void_cookie_t \fBxcb_ungrab_key\fP(xcb_connection_t\ *\fIconn\fP, xcb_keycode_t\ \fIkey\fP, xcb_window_t\ \fIgrab_window\fP, uint16_t\ \fImodifiers\fP);
 .br
 .hy 1
 .SH REQUEST ARGUMENTS
