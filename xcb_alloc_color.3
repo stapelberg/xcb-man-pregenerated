@@ -47,11 +47,13 @@ and directly calculate the color pixel value to avoid the round trip. But, for
 example, on 16-bit color setups (VNC), you can easily get the closest supported
 RGB value to the RGB value you are specifying.
 .SH RETURN VALUE
-TODO: not yet generated
+Returns an \fIxcb_alloc_color_cookie_t\fP. Errors have to be handled when calling the reply function \fIxcb_alloc_color_reply\fP.
+
+If you want to handle errors in the event loop instead, use \fIxcb_alloc_color_unchecked\fP. See \fBxcb-requests(3)\fP for details.
 .SH ERRORS
-.IP \fIxcb_color_error_t\fP 1i
+.IP \fIxcb_colormap_error_t\fP 1i
 The specified colormap \fIcmap\fP does not exist.
 .SH SEE ALSO
-
+.BR xcb-requests (3)
 .SH AUTHOR
 Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

@@ -44,7 +44,9 @@ The \fIwindow\fP to query.
 Gets the root window ID, parent window ID and list of children windows for the
 specified \fIwindow\fP.
 .SH RETURN VALUE
-TODO: not yet generated
+Returns an \fIxcb_query_tree_cookie_t\fP. Errors have to be handled when calling the reply function \fIxcb_query_tree_reply\fP.
+
+If you want to handle errors in the event loop instead, use \fIxcb_query_tree_unchecked\fP. See \fBxcb-requests(3)\fP for details.
 .SH ERRORS
 This request does never generate any errors.
 .SH EXAMPLE
@@ -72,6 +74,8 @@ void my_example(xcb_connection *conn, xcb_window_t window) {
 }
 .fi
 .SH SEE ALSO
+.BR xcb-requests (3),
+.BR xcb-examples (3),
 .BR xwininfo (1)
 .SH AUTHOR
 Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

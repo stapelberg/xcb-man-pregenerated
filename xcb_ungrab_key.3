@@ -28,13 +28,16 @@ with every possible modifier combination.
 Releases the key combination on \fIgrab_window\fP if you grabbed it using
 \fIxcb_grab_key\fP before.
 .SH RETURN VALUE
-TODO: not yet generated
+Returns an \fIxcb_void_cookie_t\fP. Errors (if any) have to be handled in the event loop.
+
+If you want to handle errors directly with \fIxcb_request_check\fP instead, use \fIxcb_ungrab_key_checked\fP. See \fBxcb-requests(3)\fP for details.
 .SH ERRORS
 .IP \fIxcb_window_error_t\fP 1i
 The specified \fIgrab_window\fP does not exist.
 .IP \fIxcb_value_error_t\fP 1i
 TODO: reasons?
 .SH SEE ALSO
+.BR xcb-requests (3),
 .BR xev (1),
 .BR xcb_grab_key (3)
 .SH AUTHOR

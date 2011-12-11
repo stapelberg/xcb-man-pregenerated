@@ -20,16 +20,21 @@ One of the following values:
 .RS 1i
 .IP \fIXCB_CW_BACK_PIXMAP\fP 1i
 Overrides the default background-pixmap. The background pixmap and window must
-have the same root and same depth. Any size pixmap can be use, although some
+have the same root and same depth. Any size pixmap can be used, although some
 sizes may be faster than others.
 
-TODO: xcb_none
+If \fIXCB_BACK_PIXMAP_NONE\fP is specified, the window has no defined background.
+The server may fill the contents with the previous screen contents or with
+contents of its own choosing.
+
+If \fIXCB_BACK_PIXMAP_PARENT_RELATIVE\fP is specified, the parent's background is
+used, but the window must have the same depth as the parent (or a Match error
+results).   The parent's background is tracked, and the current version is
+used each time the window background is required.
 .IP \fIXCB_CW_BACK_PIXEL\fP 1i
 Overrides \fIBackPixmap\fP. A pixmap of undefined size filled with the specified
 background pixel is used for the background. Range-checking is not performed,
 the background pixel is truncated to the appropriate number of bits.
-
-TODO: can xcb_none be used here?
 .IP \fIXCB_CW_BORDER_PIXMAP\fP 1i
 Overrides the default border-pixmap. The border pixmap and window must have the
 same root and the same depth. Any size pixmap can be used, although some sizes
@@ -108,13 +113,15 @@ example.
 .SH DESCRIPTION
 Changes the attributes specified by \fIvalue_mask\fP for the specified \fIwindow\fP.
 .SH RETURN VALUE
-TODO: not yet generated
+Returns an \fIxcb_void_cookie_t\fP. Errors (if any) have to be handled in the event loop.
+
+If you want to handle errors directly with \fIxcb_request_check\fP instead, use \fIxcb_change_window_attributes_checked\fP. See \fBxcb-requests(3)\fP for details.
 .SH ERRORS
 .IP \fIxcb_cursor_error_t\fP 1i
 TODO: reasons?
-.IP \fIxcb_pixmap_error_t\fP 1i
+.IP \fIxcb_colormap_error_t\fP 1i
 TODO: reasons?
-.IP \fIxcb_color_error_t\fP 1i
+.IP \fIxcb_pixmap_error_t\fP 1i
 TODO: reasons?
 .IP \fIxcb_value_error_t\fP 1i
 TODO: reasons?
@@ -125,6 +132,6 @@ The specified \fIwindow\fP does not exist.
 .IP \fIxcb_match_error_t\fP 1i
 TODO: reasons?
 .SH SEE ALSO
-
+.BR xcb-requests (3)
 .SH AUTHOR
 Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

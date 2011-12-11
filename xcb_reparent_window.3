@@ -29,7 +29,9 @@ with respect to sibling windows.
 
 After reparenting, a ReparentNotify event is generated.
 .SH RETURN VALUE
-TODO: not yet generated
+Returns an \fIxcb_void_cookie_t\fP. Errors (if any) have to be handled in the event loop.
+
+If you want to handle errors directly with \fIxcb_request_check\fP instead, use \fIxcb_reparent_window_checked\fP. See \fBxcb-requests(3)\fP for details.
 .SH ERRORS
 .IP \fIxcb_window_error_t\fP 1i
 The specified window does not exist.
@@ -42,6 +44,7 @@ The new parent is InputOnly and the window is not.
 
 The specified window has a ParentRelative background and the new parent window is not the same depth as the specified window.
 .SH SEE ALSO
+.BR xcb-requests (3),
 .BR xcb_unmap_window (3),
 .BR xcb_reparent_notify_event_t (3),
 .BR xcb_map_window (3)

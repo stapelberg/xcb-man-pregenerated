@@ -33,7 +33,9 @@ Fills the specified rectangle(s) in the order listed in the array. For any
 given rectangle, each pixel is not drawn more than once. If rectangles
 intersect, the intersecting pixels are drawn multiple times.
 .SH RETURN VALUE
-TODO: not yet generated
+Returns an \fIxcb_void_cookie_t\fP. Errors (if any) have to be handled in the event loop.
+
+If you want to handle errors directly with \fIxcb_request_check\fP instead, use \fIxcb_poly_fill_rectangle_checked\fP. See \fBxcb-requests(3)\fP for details.
 .SH ERRORS
 .IP \fIxcb_drawable_error_t\fP 1i
 The specified \fIdrawable\fP (Window or Pixmap) does not exist.
@@ -42,6 +44,6 @@ The specified graphics context does not exist.
 .IP \fIxcb_match_error_t\fP 1i
 TODO: reasons?
 .SH SEE ALSO
-
+.BR xcb-requests (3)
 .SH AUTHOR
 Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

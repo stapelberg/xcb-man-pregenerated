@@ -84,12 +84,10 @@ The modifiers to grab.
 Using the special value \fIXCB_MOD_MASK_ANY\fP means grab the pointer with all
 possible modifier combinations.
 .SH DESCRIPTION
-TODO: The paragraph says "in the future"? Is that outdated or not?
-
-This request establishes a passive grab. In the future, the pointer is actively grabbed as described
-in GrabPointer, the last-pointer-grab time is set to the time at which the button was pressed (as
-transmitted in the ButtonPress event), and the ButtonPress event is reported if all of the follow-
-ing conditions are true:
+This request establishes a passive grab. The pointer is actively grabbed as
+described in GrabPointer, the last-pointer-grab time is set to the time at
+which the button was pressed (as transmitted in the ButtonPress event), and the
+ButtonPress event is reported if all of the following conditions are true:
 
 The pointer is not grabbed and the specified button is logically pressed when
 the specified modifier keys are logically down, and no other buttons or
@@ -99,27 +97,32 @@ The grab-window contains the pointer.
 
 The confine-to window (if any) is viewable.
 
-A passive grab on the same button/key combination does not exist on any ancestor of grab-window.
+A passive grab on the same button/key combination does not exist on any
+ancestor of grab-window.
 
-The interpretation of the remaining arguments is the same as for GrabPointer. The active grab
-is terminated automatically when the logical state of the pointer has all buttons released, indepen-
-dent of the logical state of modifier keys. Note that the logical state of a device (as seen by means
-of the protocol) may lag the physical state if device event processing is frozen.
-This request overrides all previous passive grabs by the same client on the same button/key com-
-binations on the same window. A modifier of AnyModifier is equivalent to issuing the request
-for all possible modifier combinations (including the combination of no modifiers). It is not
-required that all specified modifiers have currently assigned keycodes. A button of AnyButton is
+The interpretation of the remaining arguments is the same as for GrabPointer.
+The active grab is terminated automatically when the logical state of the
+pointer has all buttons released, independent of the logical state of modifier
+keys. Note that the logical state of a device (as seen by means of the
+protocol) may lag the physical state if device event processing is frozen. This
+request overrides all previous passive grabs by the same client on the same
+button/key combinations on the same window. A modifier of AnyModifier is
+equivalent to issuing the request for all possible modifier combinations
+(including the combination of no modifiers). It is not required that all
+specified modifiers have currently assigned keycodes. A button of AnyButton is
 equivalent to issuing the request for all possible buttons. Otherwise, it is
 not required that the button specified currently be assigned to a physical
 button.
 
-An Access error is generated if some other client has already issued a GrabButton request with
-the same button/key combination on the same window. When using AnyModifier or
-AnyButton, the request fails completely (no grabs are established), and an Access error is gener-
-ated if there is a conflicting grab for any combination. The request has no effect on an active
-grab.
+An Access error is generated if some other client has already issued a
+GrabButton request with the same button/key combination on the same window.
+When using AnyModifier or AnyButton, the request fails completely (no grabs are
+established), and an Access error is generated if there is a conflicting grab
+for any combination. The request has no effect on an active grab.
 .SH RETURN VALUE
-TODO: not yet generated
+Returns an \fIxcb_void_cookie_t\fP. Errors (if any) have to be handled in the event loop.
+
+If you want to handle errors directly with \fIxcb_request_check\fP instead, use \fIxcb_grab_button_checked\fP. See \fBxcb-requests(3)\fP for details.
 .SH ERRORS
 .IP \fIxcb_access_error_t\fP 1i
 Another client has already issued a GrabButton with the same button/key
@@ -131,6 +134,6 @@ The specified \fIwindow\fP does not exist.
 .IP \fIxcb_value_error_t\fP 1i
 TODO: reasons?
 .SH SEE ALSO
-
+.BR xcb-requests (3)
 .SH AUTHOR
 Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

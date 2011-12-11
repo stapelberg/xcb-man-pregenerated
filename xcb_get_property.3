@@ -64,7 +64,9 @@ TODO: talk about \fIdelete\fP
 
 TODO: talk about the offset/length thing. what's a valid use case?
 .SH RETURN VALUE
-TODO: not yet generated
+Returns an \fIxcb_get_property_cookie_t\fP. Errors have to be handled when calling the reply function \fIxcb_get_property_reply\fP.
+
+If you want to handle errors in the event loop instead, use \fIxcb_get_property_unchecked\fP. See \fBxcb-requests(3)\fP for details.
 .SH ERRORS
 .IP \fIxcb_window_error_t\fP 1i
 The specified \fIwindow\fP does not exist.
@@ -95,16 +97,18 @@ void my_example(xcb_connection *c, xcb_window_t window) {
         int len = xcb_get_property_value_length(reply);
         if (len == 0) {
             printf("TODO\\n");
-	    free(reply);
-	    return;
-	}
-	printf("WM_NAME is %.*s\\n", len,
-	       (char*)xcb_get_property_value(reply));
+            free(reply);
+            return;
+        }
+        printf("WM_NAME is %.*s\\n", len,
+               (char*)xcb_get_property_value(reply));
     }
     free(reply);
 }
 .fi
 .SH SEE ALSO
+.BR xcb-requests (3),
+.BR xcb-examples (3),
 .BR xcb_intern_atom (3),
 .BR xprop (1)
 .SH AUTHOR

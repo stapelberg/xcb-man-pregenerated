@@ -60,10 +60,12 @@ The fontable (Font or Graphics Context) to query.
 .SH DESCRIPTION
 Queries information associated with the font.
 .SH RETURN VALUE
-TODO: not yet generated
+Returns an \fIxcb_query_font_cookie_t\fP. Errors have to be handled when calling the reply function \fIxcb_query_font_reply\fP.
+
+If you want to handle errors in the event loop instead, use \fIxcb_query_font_unchecked\fP. See \fBxcb-requests(3)\fP for details.
 .SH ERRORS
 This request does never generate any errors.
 .SH SEE ALSO
-
+.BR xcb-requests (3)
 .SH AUTHOR
 Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

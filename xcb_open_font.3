@@ -25,11 +25,14 @@ Opens any X core font matching the given \fIname\fP (for example "-misc-fixed-*"
 Note that X core fonts are deprecated (but still supported) in favor of
 client-side rendering using Xft.
 .SH RETURN VALUE
-TODO: not yet generated
+Returns an \fIxcb_void_cookie_t\fP. Errors (if any) have to be handled in the event loop.
+
+If you want to handle errors directly with \fIxcb_request_check\fP instead, use \fIxcb_open_font_checked\fP. See \fBxcb-requests(3)\fP for details.
 .SH ERRORS
 .IP \fIxcb_name_error_t\fP 1i
 No font matches the given \fIname\fP.
 .SH SEE ALSO
+.BR xcb-requests (3),
 .BR xcb_generate_id (3)
 .SH AUTHOR
 Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

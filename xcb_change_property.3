@@ -51,7 +51,9 @@ example the window title (\fIWM_NAME\fP) or its minimum size (\fIWM_NORMAL_HINTS
 Protocols such as EWMH also use properties - for example EWMH defines the
 window title, encoded as UTF-8 string, in the \fI_NET_WM_NAME\fP property.
 .SH RETURN VALUE
-TODO: not yet generated
+Returns an \fIxcb_void_cookie_t\fP. Errors (if any) have to be handled in the event loop.
+
+If you want to handle errors directly with \fIxcb_request_check\fP instead, use \fIxcb_change_property_checked\fP. See \fBxcb-requests(3)\fP for details.
 .SH ERRORS
 .IP \fIxcb_alloc_error_t\fP 1i
 The X server could not store the property (no memory?).
@@ -83,6 +85,8 @@ void my_example(xcb_connection *conn, xcb_window_t window) {
 }
 .fi
 .SH SEE ALSO
+.BR xcb-requests (3),
+.BR xcb-examples (3),
 .BR xcb_intern_atom (3),
 .BR xprop (1)
 .SH AUTHOR

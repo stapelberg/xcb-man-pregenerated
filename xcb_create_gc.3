@@ -26,7 +26,9 @@ TODO: NOT YET DOCUMENTED.
 Creates a graphics context. The graphics context can be used with any drawable
 that has the same root and depth as the specified drawable.
 .SH RETURN VALUE
-TODO: not yet generated
+Returns an \fIxcb_void_cookie_t\fP. Errors (if any) have to be handled in the event loop.
+
+If you want to handle errors directly with \fIxcb_request_check\fP instead, use \fIxcb_create_gc_checked\fP. See \fBxcb-requests(3)\fP for details.
 .SH ERRORS
 .IP \fIxcb_pixmap_error_t\fP 1i
 TODO: reasons?
@@ -41,6 +43,7 @@ TODO: reasons?
 .IP \fIxcb_match_error_t\fP 1i
 TODO: reasons?
 .SH SEE ALSO
+.BR xcb-requests (3),
 .BR xcb_generate_id (3)
 .SH AUTHOR
 Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

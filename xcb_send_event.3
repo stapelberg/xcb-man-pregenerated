@@ -45,7 +45,9 @@ so that the X server can correctly byte-swap the contents as necessary. The
 contents of \fIevent\fP are otherwise unaltered and unchecked except for the
 \fIsend_event\fP field which is forced to 'true'.
 .SH RETURN VALUE
-TODO: not yet generated
+Returns an \fIxcb_void_cookie_t\fP. Errors (if any) have to be handled in the event loop.
+
+If you want to handle errors directly with \fIxcb_request_check\fP instead, use \fIxcb_send_event_checked\fP. See \fBxcb-requests(3)\fP for details.
 .SH ERRORS
 .IP \fIxcb_window_error_t\fP 1i
 The specified \fIdestination\fP window does not exist.
@@ -84,6 +86,8 @@ void my_example(xcb_connection_t *conn, xcb_window_t window) {
 }
 .fi
 .SH SEE ALSO
+.BR xcb-requests (3),
+.BR xcb-examples (3),
 .BR xcb_configure_notify_event_t (3)
 .SH AUTHOR
 Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

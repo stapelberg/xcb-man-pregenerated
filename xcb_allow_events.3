@@ -97,11 +97,13 @@ freeze due to grabbing it actively. This request has no effect if \fItime\fP is
 earlier than the last-grab time of the most recent active grab for this client
 or if \fItime\fP is later than the current X server time.
 .SH RETURN VALUE
-TODO: not yet generated
+Returns an \fIxcb_void_cookie_t\fP. Errors (if any) have to be handled in the event loop.
+
+If you want to handle errors directly with \fIxcb_request_check\fP instead, use \fIxcb_allow_events_checked\fP. See \fBxcb-requests(3)\fP for details.
 .SH ERRORS
 .IP \fIxcb_value_error_t\fP 1i
 You specified an invalid \fImode\fP.
 .SH SEE ALSO
-
+.BR xcb-requests (3)
 .SH AUTHOR
 Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

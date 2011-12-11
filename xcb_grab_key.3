@@ -87,7 +87,9 @@ If some other client has issued a XGrabKey with the same key combination on the 
 error results.  When using AnyModifier or AnyKey, the request fails completely, and a BadAccess error
 results (no grabs are established) if there is a conflicting grab for any combination.
 .SH RETURN VALUE
-TODO: not yet generated
+Returns an \fIxcb_void_cookie_t\fP. Errors (if any) have to be handled in the event loop.
+
+If you want to handle errors directly with \fIxcb_request_check\fP instead, use \fIxcb_grab_key_checked\fP. See \fBxcb-requests(3)\fP for details.
 .SH ERRORS
 .IP \fIxcb_access_error_t\fP 1i
 Another client has already issued a GrabKey with the same button/key
@@ -97,6 +99,7 @@ The specified \fIwindow\fP does not exist.
 .IP \fIxcb_value_error_t\fP 1i
 TODO: reasons?
 .SH SEE ALSO
+.BR xcb-requests (3),
 .BR xcb_grab_keyboard (3)
 .SH AUTHOR
 Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

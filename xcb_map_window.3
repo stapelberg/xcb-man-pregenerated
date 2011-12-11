@@ -36,11 +36,14 @@ If the window type is InputOutput, an Expose event will be generated when the
 window becomes visible. The normal response to an Expose event should be to
 repaint the window.
 .SH RETURN VALUE
-TODO: not yet generated
+Returns an \fIxcb_void_cookie_t\fP. Errors (if any) have to be handled in the event loop.
+
+If you want to handle errors directly with \fIxcb_request_check\fP instead, use \fIxcb_map_window_checked\fP. See \fBxcb-requests(3)\fP for details.
 .SH ERRORS
 .IP \fIxcb_match_error_t\fP 1i
 The specified window does not exist.
 .SH SEE ALSO
+.BR xcb-requests (3),
 .BR xcb_map_notify_event_t (3),
 .BR xcb_expose_event_t (3),
 .BR xcb_unmap_window (3)

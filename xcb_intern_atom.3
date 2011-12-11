@@ -29,7 +29,7 @@ xcb_intern_atom_reply_t *\fBxcb_intern_atom_reply\fP(xcb_connection_t\ *\fIconn\
 .IP \fIconn\fP 1i
 The XCB connection to X11.
 .IP \fIonly_if_exists\fP 1i
-Create the atom (0) or return an error (1) if the specified atom does not exist already.
+Return a valid atom id only if the atom already exists.
 .IP \fIname_len\fP 1i
 The length of the following \fIname\fP.
 .IP \fIname\fP 1i
@@ -39,15 +39,18 @@ Retrieves the identifier (xcb_atom_t TODO) for the atom with the specified
 name. Atoms are used in protocols like EWMH, for example to store window titles
 (\fI_NET_WM_NAME\fP atom) as property of a window.
 
-If \fIonly_if_exists\fP is 0, the atom will be created. If \fIonly_if_exists\fP is 1,
-you will get an error (TODO).
+If \fIonly_if_exists\fP is 0, the atom will be created if it does not already exist.
+If \fIonly_if_exists\fP is 1, \fIXCB_ATOM_NONE\fP will be returned if the atom does
+not yet exist.
 .SH RETURN VALUE
-TODO: not yet generated
+Returns an \fIxcb_intern_atom_cookie_t\fP. Errors have to be handled when calling the reply function \fIxcb_intern_atom_reply\fP.
+
+If you want to handle errors in the event loop instead, use \fIxcb_intern_atom_unchecked\fP. See \fBxcb-requests(3)\fP for details.
 .SH ERRORS
 .IP \fIxcb_alloc_error_t\fP 1i
 TODO: reasons?
 .IP \fIxcb_value_error_t\fP 1i
-TODO: reasons?
+A value other than 0 or 1 was specified for \fIonly_if_exists\fP.
 .SH EXAMPLE
 .nf
 .sp
@@ -68,6 +71,9 @@ void my_example(xcb_connection *c) {
 }
 .fi
 .SH SEE ALSO
+.BR xcb-requests (3),
+.BR xcb-examples (3),
+.BR xcb_get_atom_name (3),
 .BR xlsatoms (1)
 .SH AUTHOR
 Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

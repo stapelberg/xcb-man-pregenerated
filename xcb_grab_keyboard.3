@@ -77,7 +77,9 @@ specified \fItime\fP is earlier than the last-keyboard-grab time or later than t
 current X server time, \fIGrabInvalidTime\fP is returned. Otherwise, the
 last-keyboard-grab time is set to the specified time.
 .SH RETURN VALUE
-TODO: not yet generated
+Returns an \fIxcb_grab_keyboard_cookie_t\fP. Errors have to be handled when calling the reply function \fIxcb_grab_keyboard_reply\fP.
+
+If you want to handle errors in the event loop instead, use \fIxcb_grab_keyboard_unchecked\fP. See \fBxcb-requests(3)\fP for details.
 .SH ERRORS
 .IP \fIxcb_window_error_t\fP 1i
 The specified \fIwindow\fP does not exist.
@@ -107,11 +109,13 @@ void my_example(xcb_connection *conn, xcb_screen_t *screen) {
         if (reply->status == XCB_GRAB_STATUS_SUCCESS)
             printf("successfully grabbed the keyboard\\n");
 
-        free(kreply);
+        free(reply);
     }
 }
 .fi
 .SH SEE ALSO
+.BR xcb-requests (3),
+.BR xcb-examples (3),
 .BR xcb_grab_pointer (3)
 .SH AUTHOR
 Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

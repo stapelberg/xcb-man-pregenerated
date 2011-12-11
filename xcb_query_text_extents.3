@@ -63,13 +63,15 @@ characters in the string are taken to have all zero metrics.
 Characters with all zero metrics are ignored. If the font has no defined
 default_char, the undefined characters in the string are also ignored.
 .SH RETURN VALUE
-TODO: not yet generated
+Returns an \fIxcb_query_text_extents_cookie_t\fP. Errors have to be handled when calling the reply function \fIxcb_query_text_extents_reply\fP.
+
+If you want to handle errors in the event loop instead, use \fIxcb_query_text_extents_unchecked\fP. See \fBxcb-requests(3)\fP for details.
 .SH ERRORS
 .IP \fIxcb_font_error_t\fP 1i
 The specified \fIfont\fP does not exist.
 .IP \fIxcb_gc_error_t\fP 1i
 The specified graphics context does not exist.
 .SH SEE ALSO
-
+.BR xcb-requests (3)
 .SH AUTHOR
 Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

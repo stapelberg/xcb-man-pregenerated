@@ -48,7 +48,9 @@ specified by \fIfore_red\fP, \fIfore_green\fP and \fIfore_blue\fP). All pixels s
 will use the background color (as specified by \fIback_red\fP, \fIback_green\fP and
 \fIback_blue\fP).
 .SH RETURN VALUE
-TODO: not yet generated
+Returns an \fIxcb_void_cookie_t\fP. Errors (if any) have to be handled in the event loop.
+
+If you want to handle errors directly with \fIxcb_request_check\fP instead, use \fIxcb_create_glyph_cursor_checked\fP. See \fBxcb-requests(3)\fP for details.
 .SH ERRORS
 .IP \fIxcb_alloc_error_t\fP 1i
 The X server could not allocate the requested resources (no memory?).
@@ -57,6 +59,6 @@ The specified \fIsource_font\fP or \fImask_font\fP does not exist.
 .IP \fIxcb_value_error_t\fP 1i
 Either \fIsource_char\fP or \fImask_char\fP are not defined in \fIsource_font\fP or \fImask_font\fP, respectively.
 .SH SEE ALSO
-
+.BR xcb-requests (3)
 .SH AUTHOR
 Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

@@ -34,7 +34,9 @@ TODO: include the xcb_segment_t data structure
 
 TODO: an example
 .SH RETURN VALUE
-TODO: not yet generated
+Returns an \fIxcb_void_cookie_t\fP. Errors (if any) have to be handled in the event loop.
+
+If you want to handle errors directly with \fIxcb_request_check\fP instead, use \fIxcb_poly_segment_checked\fP. See \fBxcb-requests(3)\fP for details.
 .SH ERRORS
 .IP \fIxcb_drawable_error_t\fP 1i
 The specified \fIdrawable\fP does not exist.
@@ -43,6 +45,6 @@ The specified \fIgc\fP does not exist.
 .IP \fIxcb_match_error_t\fP 1i
 TODO: reasons?
 .SH SEE ALSO
-
+.BR xcb-requests (3)
 .SH AUTHOR
 Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

@@ -39,7 +39,9 @@ The drawable (\fIWindow\fP or \fIPixmap\fP) of which the geometry will be receiv
 .SH DESCRIPTION
 Gets the current geometry of the specified drawable (either \fIWindow\fP or \fIPixmap\fP).
 .SH RETURN VALUE
-TODO: not yet generated
+Returns an \fIxcb_get_geometry_cookie_t\fP. Errors have to be handled when calling the reply function \fIxcb_get_geometry_reply\fP.
+
+If you want to handle errors in the event loop instead, use \fIxcb_get_geometry_unchecked\fP. See \fBxcb-requests(3)\fP for details.
 .SH ERRORS
 .IP \fIxcb_drawable_error_t\fP 1i
 TODO: reasons?
@@ -65,6 +67,8 @@ void my_example(xcb_connection *c, xcb_window_t window) {
 }
 .fi
 .SH SEE ALSO
+.BR xcb-requests (3),
+.BR xcb-examples (3),
 .BR xwininfo (1)
 .SH AUTHOR
 Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

@@ -87,7 +87,9 @@ time.
 .SH DESCRIPTION
 Actively grabs control of the pointer. Further pointer events are reported only to the grabbing client. Overrides any active pointer grab by this client.
 .SH RETURN VALUE
-TODO: not yet generated
+Returns an \fIxcb_grab_pointer_cookie_t\fP. Errors have to be handled when calling the reply function \fIxcb_grab_pointer_reply\fP.
+
+If you want to handle errors in the event loop instead, use \fIxcb_grab_pointer_unchecked\fP. See \fBxcb-requests(3)\fP for details.
 .SH ERRORS
 .IP \fIxcb_window_error_t\fP 1i
 The specified \fIwindow\fP does not exist.
@@ -118,12 +120,14 @@ void my_example(xcb_connection *conn, xcb_screen_t *screen, xcb_cursor_t cursor)
 
     if ((reply = xcb_grab_pointer_reply(conn, cookie, NULL))) {
         if (reply->status == XCB_GRAB_STATUS_SUCCESS)
-            printf("successfully grabbedt he pointer\\n");
+            printf("successfully grabbed the pointer\\n");
         free(preply);
     }
 }
 .fi
 .SH SEE ALSO
+.BR xcb-requests (3),
+.BR xcb-examples (3),
 .BR xcb_grab_keyboard (3)
 .SH AUTHOR
 Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

@@ -21,9 +21,10 @@ One of the following values:
 .IP \fIXCB_GC_FUNCTION\fP 1i
 TODO: Refer to GX
 .IP \fIXCB_GC_PLANE_MASK\fP 1i
-In graphics operations, given a source and destination pixel, the result is computed bitwise on cor-
-responding bits of the pixels; that is, a Boolean operation is performed in each bit plane. The
-plane-mask restricts the operation to a subset of planes, so the result is:
+In graphics operations, given a source and destination pixel, the result is
+computed bitwise on corresponding bits of the pixels; that is, a Boolean
+operation is performed in each bit plane. The plane-mask restricts the
+operation to a subset of planes, so the result is:
 
         ((src FUNC dst) AND plane-mask) OR (dst AND (NOT plane-mask))
 .IP \fIXCB_GC_FOREGROUND\fP 1i
@@ -86,8 +87,9 @@ specified by the tile/stipple origin. The tile/stipple and clip origins are inte
 origin of whatever destination drawable is specified in a graphics request.
 The tile pixmap must have the same root and depth as the gcontext (or a Match error results).
 The stipple pixmap must have depth one and must have the same root as the gcontext (or a
-Match error results). For fill-style Stippled (but not fill-style OpaqueStippled), the stipple pat-
-tern is tiled in a single plane and acts as an additional clip mask to be ANDed with the clip-mask.
+Match error results). For fill-style Stippled (but not fill-style
+OpaqueStippled), the stipple pattern is tiled in a single plane and acts as an
+additional clip mask to be ANDed with the clip-mask.
 Any size pixmap can be used for tiling or stippling, although some sizes may be faster to use than
 others.
 .IP \fIXCB_GC_STIPPLE\fP 1i
@@ -98,8 +100,9 @@ specified by the tile/stipple origin. The tile/stipple and clip origins are inte
 origin of whatever destination drawable is specified in a graphics request.
 The tile pixmap must have the same root and depth as the gcontext (or a Match error results).
 The stipple pixmap must have depth one and must have the same root as the gcontext (or a
-Match error results). For fill-style Stippled (but not fill-style OpaqueStippled), the stipple pat-
-tern is tiled in a single plane and acts as an additional clip mask to be ANDed with the clip-mask.
+Match error results). For fill-style Stippled (but not fill-style
+OpaqueStippled), the stipple pattern is tiled in a single plane and acts as an
+additional clip mask to be ANDed with the clip-mask.
 Any size pixmap can be used for tiling or stippling, although some sizes may be faster to use than
 others.
 .IP \fIXCB_GC_TILE_STIPPLE_ORIGIN_X\fP 1i
@@ -109,8 +112,9 @@ TODO
 .IP \fIXCB_GC_FONT\fP 1i
 Which font to use for the \fIImageText8\fP and \fIImageText16\fP requests.
 .IP \fIXCB_GC_SUBWINDOW_MODE\fP 1i
-For ClipByChildren, both source and destination windows are additionally clipped by all view-
-able InputOutput children. For IncludeInferiors, neither source nor destination window is
+For ClipByChildren, both source and destination windows are additionally
+clipped by all viewable InputOutput children. For IncludeInferiors, neither
+source nor destination window is
 clipped by inferiors. This will result in including subwindow contents in the source and drawing
 through subwindow boundaries of the destination. The use of IncludeInferiors with a source or
 destination window of one depth with mapped inferiors of differing depth is not illegal, but the
@@ -127,8 +131,7 @@ TODO
 The clip-mask restricts writes to the destination drawable. Only pixels where the clip-mask has
 bits set to 1 are drawn. Pixels are not drawn outside the area covered by the clip-mask or where
 the clip-mask has bits set to 0. The clip-mask affects all graphics requests, but it does not clip
-sources. The clip-mask origin is interpreted relative to the origin of whatever destination draw-
-able is specified in a graphics request. If a pixmap is specified as the clip-mask, it must have
+sources. The clip-mask origin is interpreted relative to the origin of whatever destination drawable is specified in a graphics request. If a pixmap is specified as the clip-mask, it must have
 depth 1 and have the same root as the gcontext (or a Match error results). If clip-mask is None,
 then pixels are always drawn, regardless of the clip origin. The clip-mask can also be set with the
 SetClipRectangles request.
@@ -150,7 +153,9 @@ example.
 .SH DESCRIPTION
 Changes the components specified by \fIvalue_mask\fP for the specified graphics context.
 .SH RETURN VALUE
-TODO: not yet generated
+Returns an \fIxcb_void_cookie_t\fP. Errors (if any) have to be handled in the event loop.
+
+If you want to handle errors directly with \fIxcb_request_check\fP instead, use \fIxcb_change_gc_checked\fP. See \fBxcb-requests(3)\fP for details.
 .SH ERRORS
 .IP \fIxcb_pixmap_error_t\fP 1i
 TODO: reasons?
@@ -189,6 +194,7 @@ void my_example(xcb_connection *conn, xcb_gcontext_t gc, uint32_t fg, uint32_t b
 }
 .fi
 .SH SEE ALSO
-
+.BR xcb-requests (3),
+.BR xcb-examples (3)
 .SH AUTHOR
 Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

@@ -35,11 +35,14 @@ Gets the owner of the specified selection.
 
 TODO: briefly explain what a selection is.
 .SH RETURN VALUE
-TODO: not yet generated
+Returns an \fIxcb_get_selection_owner_cookie_t\fP. Errors have to be handled when calling the reply function \fIxcb_get_selection_owner_reply\fP.
+
+If you want to handle errors in the event loop instead, use \fIxcb_get_selection_owner_unchecked\fP. See \fBxcb-requests(3)\fP for details.
 .SH ERRORS
 .IP \fIxcb_atom_error_t\fP 1i
 \fIselection\fP does not refer to a valid atom.
 .SH SEE ALSO
+.BR xcb-requests (3),
 .BR xcb_set_selection_owner (3)
 .SH AUTHOR
 Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.

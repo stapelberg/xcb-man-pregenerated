@@ -47,10 +47,13 @@ set accordingly.
 There should rarely be a need to use this request directly, XCB provides the
 \fIxcb_get_extension_data\fP function instead.
 .SH RETURN VALUE
-TODO: not yet generated
+Returns an \fIxcb_query_extension_cookie_t\fP. Errors have to be handled when calling the reply function \fIxcb_query_extension_reply\fP.
+
+If you want to handle errors in the event loop instead, use \fIxcb_query_extension_unchecked\fP. See \fBxcb-requests(3)\fP for details.
 .SH ERRORS
 This request does never generate any errors.
 .SH SEE ALSO
+.BR xcb-requests (3),
 .BR xdpyinfo (1),
 .BR xcb_get_extension_data (3)
 .SH AUTHOR

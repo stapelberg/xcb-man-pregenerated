@@ -43,7 +43,9 @@ intersect, the intersecting pixels are drawn multiple times. If wide lines
 intersect, the intersecting pixels are drawn only once, as though the entire
 request were a single, filled shape.
 .SH RETURN VALUE
-TODO: not yet generated
+Returns an \fIxcb_void_cookie_t\fP. Errors (if any) have to be handled in the event loop.
+
+If you want to handle errors directly with \fIxcb_request_check\fP instead, use \fIxcb_poly_line_checked\fP. See \fBxcb-requests(3)\fP for details.
 .SH ERRORS
 .IP \fIxcb_drawable_error_t\fP 1i
 TODO: reasons?
@@ -67,6 +69,7 @@ void my_example(xcb_connection *conn, xcb_drawable_t drawable, xcb_gcontext_t gc
 }
 .fi
 .SH SEE ALSO
-
+.BR xcb-requests (3),
+.BR xcb-examples (3)
 .SH AUTHOR
 Generated from xproto.xml. Contact xcb@lists.freedesktop.org for corrections and improvements.
