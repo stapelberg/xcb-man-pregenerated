@@ -36,6 +36,21 @@ The length of \fIname\fP in bytes.
 .IP \fIname\fP 1i
 The name of the extension to query, for example "RANDR". This is case
 sensitive!
+.SH REPLY FIELDS
+.IP \fIresponse_type\fP 1i
+The type of this reply, in this case \fIXCB_QUERY_EXTENSION\fP. This field is also present in the \fIxcb_generic_reply_t\fP and can be used to tell replies apart from each other.
+.IP \fIsequence\fP 1i
+The sequence number of the last request processed by the X11 server.
+.IP \fIlength\fP 1i
+The length of the reply, in words (a word is 4 bytes).
+.IP \fIpresent\fP 1i
+Whether the extension is present on this X11 server.
+.IP \fImajor_opcode\fP 1i
+The major opcode for requests.
+.IP \fIfirst_event\fP 1i
+The first event code, if any.
+.IP \fIfirst_error\fP 1i
+The first error code, if any.
 .SH DESCRIPTION
 Determines if the specified extension is present on this X11 server.
 

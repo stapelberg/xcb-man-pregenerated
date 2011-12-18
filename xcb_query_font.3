@@ -57,6 +57,49 @@ xcb_charinfo_iterator_t \fBxcb_query_font_char_infos_iterator\fP(const xcb_query
 The XCB connection to X11.
 .IP \fIfont\fP 1i
 The fontable (Font or Graphics Context) to query.
+.SH REPLY FIELDS
+.IP \fIresponse_type\fP 1i
+The type of this reply, in this case \fIXCB_QUERY_FONT\fP. This field is also present in the \fIxcb_generic_reply_t\fP and can be used to tell replies apart from each other.
+.IP \fIsequence\fP 1i
+The sequence number of the last request processed by the X11 server.
+.IP \fIlength\fP 1i
+The length of the reply, in words (a word is 4 bytes).
+.IP \fImin_bounds\fP 1i
+minimum bounds over all existing char
+.IP \fImax_bounds\fP 1i
+maximum bounds over all existing char
+.IP \fImin_char_or_byte2\fP 1i
+first character
+.IP \fImax_char_or_byte2\fP 1i
+last character
+.IP \fIdefault_char\fP 1i
+char to print for undefined character
+.IP \fIproperties_len\fP 1i
+how many properties there are
+.IP \fIdraw_direction\fP 1i
+One of the following values:
+.RS 1i
+.IP \fIXCB_FONT_DRAW_LEFT_TO_RIGHT\fP 1i
+TODO: NOT YET DOCUMENTED.
+.IP \fIXCB_FONT_DRAW_RIGHT_TO_LEFT\fP 1i
+TODO: NOT YET DOCUMENTED.
+.RE
+.RS 1i
+
+
+.RE
+.IP \fImin_byte1\fP 1i
+TODO: NOT YET DOCUMENTED.
+.IP \fImax_byte1\fP 1i
+TODO: NOT YET DOCUMENTED.
+.IP \fIall_chars_exist\fP 1i
+flag if all characters have nonzero size
+.IP \fIfont_ascent\fP 1i
+baseline to top edge of raster
+.IP \fIfont_descent\fP 1i
+baseline to bottom edge of raster
+.IP \fIchar_infos_len\fP 1i
+TODO: NOT YET DOCUMENTED.
 .SH DESCRIPTION
 Queries information associated with the font.
 .SH RETURN VALUE

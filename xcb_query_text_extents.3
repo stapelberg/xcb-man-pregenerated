@@ -40,6 +40,38 @@ The \fIfont\fP to calculate text extents in. You can also pass a graphics contex
 The number of characters in \fIstring\fP.
 .IP \fIstring\fP 1i
 The text to get text extents for.
+.SH REPLY FIELDS
+.IP \fIresponse_type\fP 1i
+The type of this reply, in this case \fIXCB_QUERY_TEXT_EXTENTS\fP. This field is also present in the \fIxcb_generic_reply_t\fP and can be used to tell replies apart from each other.
+.IP \fIsequence\fP 1i
+The sequence number of the last request processed by the X11 server.
+.IP \fIlength\fP 1i
+The length of the reply, in words (a word is 4 bytes).
+.IP \fIdraw_direction\fP 1i
+One of the following values:
+.RS 1i
+.IP \fIXCB_FONT_DRAW_LEFT_TO_RIGHT\fP 1i
+TODO: NOT YET DOCUMENTED.
+.IP \fIXCB_FONT_DRAW_RIGHT_TO_LEFT\fP 1i
+TODO: NOT YET DOCUMENTED.
+.RE
+.RS 1i
+TODO: NOT YET DOCUMENTED.
+.RE
+.IP \fIfont_ascent\fP 1i
+TODO: NOT YET DOCUMENTED.
+.IP \fIfont_descent\fP 1i
+TODO: NOT YET DOCUMENTED.
+.IP \fIoverall_ascent\fP 1i
+TODO: NOT YET DOCUMENTED.
+.IP \fIoverall_descent\fP 1i
+TODO: NOT YET DOCUMENTED.
+.IP \fIoverall_width\fP 1i
+TODO: NOT YET DOCUMENTED.
+.IP \fIoverall_left\fP 1i
+TODO: NOT YET DOCUMENTED.
+.IP \fIoverall_right\fP 1i
+TODO: NOT YET DOCUMENTED.
 .SH DESCRIPTION
 Query text extents from the X11 server. This request returns the bounding box
 of the specified 16-bit character string in the specified \fIfont\fP or the font

@@ -38,6 +38,38 @@ The XCB connection to X11.
 .IP \fIwindow\fP 1i
 A window to check if the pointer is on the same screen as \fIwindow\fP (see the
 \fIsame_screen\fP field in the reply).
+.SH REPLY FIELDS
+.IP \fIresponse_type\fP 1i
+The type of this reply, in this case \fIXCB_QUERY_POINTER\fP. This field is also present in the \fIxcb_generic_reply_t\fP and can be used to tell replies apart from each other.
+.IP \fIsequence\fP 1i
+The sequence number of the last request processed by the X11 server.
+.IP \fIlength\fP 1i
+The length of the reply, in words (a word is 4 bytes).
+.IP \fIsame_screen\fP 1i
+If \fIsame_screen\fP is False, then the pointer is not on the same screen as the
+argument window, \fIchild\fP is None, and \fIwin_x\fP and \fIwin_y\fP are zero. If
+\fIsame_screen\fP is True, then \fIwin_x\fP and \fIwin_y\fP are the pointer coordinates
+relative to the argument window's origin, and child is the child containing the
+pointer, if any.
+.IP \fIroot\fP 1i
+The root window the pointer is logically on.
+.IP \fIchild\fP 1i
+The child window containing the pointer, if any, if \fIsame_screen\fP is true. If
+\fIsame_screen\fP is false, \fIXCB_NONE\fP is returned.
+.IP \fIroot_x\fP 1i
+The pointer X position, relative to \fIroot\fP.
+.IP \fIroot_y\fP 1i
+The pointer Y position, relative to \fIroot\fP.
+.IP \fIwin_x\fP 1i
+The pointer X coordinate, relative to \fIchild\fP, if \fIsame_screen\fP is true. Zero
+otherwise.
+.IP \fIwin_y\fP 1i
+The pointer Y coordinate, relative to \fIchild\fP, if \fIsame_screen\fP is true. Zero
+otherwise.
+.IP \fImask\fP 1i
+The current logical state of the modifier keys and the buttons. Note that the
+logical state of a device (as seen by means of the protocol) may lag the
+physical state if device event processing is frozen.
 .SH DESCRIPTION
 Gets the root window the pointer is logically on and the pointer coordinates
 relative to the root window's origin.

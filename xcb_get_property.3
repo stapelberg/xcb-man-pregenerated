@@ -39,7 +39,8 @@ xcb_generic_iterator_t \fBxcb_get_property_value_end\fP(const xcb_get_property_r
 .IP \fIconn\fP 1i
 The XCB connection to X11.
 .IP \fI_delete\fP 1i
-TODO: NOT YET DOCUMENTED.
+Whether the property should actually be deleted. For deleting a property, the
+specified \fItype\fP has to match the actual property type.
 .IP \fIwindow\fP 1i
 The window whose property you want to get.
 .IP \fIproperty\fP 1i
@@ -52,6 +53,25 @@ data is to be retrieved.
 .IP \fIlong_length\fP 1i
 Specifies how many 32-bit multiples of data should be retrieved (e.g. if you
 set \fIlong_length\fP to 4, you will receive 16 bytes of data).
+.SH REPLY FIELDS
+.IP \fIresponse_type\fP 1i
+The type of this reply, in this case \fIXCB_GET_PROPERTY\fP. This field is also present in the \fIxcb_generic_reply_t\fP and can be used to tell replies apart from each other.
+.IP \fIsequence\fP 1i
+The sequence number of the last request processed by the X11 server.
+.IP \fIlength\fP 1i
+The length of the reply, in words (a word is 4 bytes).
+.IP \fIformat\fP 1i
+Specifies whether the data should be viewed as a list of 8-bit, 16-bit, or
+32-bit quantities. Possible values are 8, 16, and 32. This information allows
+the X server to correctly perform byte-swap operations as necessary.
+.IP \fItype\fP 1i
+The actual type of the property (an atom).
+.IP \fIbytes_after\fP 1i
+The number of bytes remaining to be read in the property if a partial read was
+performed.
+.IP \fIvalue_len\fP 1i
+The length of value. You should use the corresponding accessor instead of this
+field.
 .SH DESCRIPTION
 Gets the specified \fIproperty\fP from the specified \fIwindow\fP. Properties are for
 example the window title (\fIWM_NAME\fP) or its minimum size (\fIWM_NORMAL_HINTS\fP).

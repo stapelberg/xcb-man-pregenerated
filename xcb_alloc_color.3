@@ -40,6 +40,21 @@ The red value of your color.
 The green value of your color.
 .IP \fIblue\fP 1i
 The blue value of your color.
+.SH REPLY FIELDS
+.IP \fIresponse_type\fP 1i
+The type of this reply, in this case \fIXCB_ALLOC_COLOR\fP. This field is also present in the \fIxcb_generic_reply_t\fP and can be used to tell replies apart from each other.
+.IP \fIsequence\fP 1i
+The sequence number of the last request processed by the X11 server.
+.IP \fIlength\fP 1i
+The length of the reply, in words (a word is 4 bytes).
+.IP \fIred\fP 1i
+TODO: NOT YET DOCUMENTED.
+.IP \fIgreen\fP 1i
+TODO: NOT YET DOCUMENTED.
+.IP \fIblue\fP 1i
+TODO: NOT YET DOCUMENTED.
+.IP \fIpixel\fP 1i
+TODO: NOT YET DOCUMENTED.
 .SH DESCRIPTION
 Allocates a read-only colormap entry corresponding to the closest RGB value
 supported by the hardware. If you are using TrueColor, you can take a shortcut

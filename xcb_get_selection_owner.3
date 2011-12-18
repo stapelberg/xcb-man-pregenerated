@@ -30,6 +30,15 @@ xcb_get_selection_owner_reply_t *\fBxcb_get_selection_owner_reply\fP(xcb_connect
 The XCB connection to X11.
 .IP \fIselection\fP 1i
 The selection.
+.SH REPLY FIELDS
+.IP \fIresponse_type\fP 1i
+The type of this reply, in this case \fIXCB_GET_SELECTION_OWNER\fP. This field is also present in the \fIxcb_generic_reply_t\fP and can be used to tell replies apart from each other.
+.IP \fIsequence\fP 1i
+The sequence number of the last request processed by the X11 server.
+.IP \fIlength\fP 1i
+The length of the reply, in words (a word is 4 bytes).
+.IP \fIowner\fP 1i
+The current selection owner window.
 .SH DESCRIPTION
 Gets the owner of the specified selection.
 

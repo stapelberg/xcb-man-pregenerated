@@ -44,6 +44,15 @@ A font pattern, for example "-misc-fixed-*".
 The asterisk (*) is a wildcard for any number of characters. The question mark
 (?) is a wildcard for a single character. Use of uppercase or lowercase does
 not matter.
+.SH REPLY FIELDS
+.IP \fIresponse_type\fP 1i
+The type of this reply, in this case \fIXCB_LIST_FONTS\fP. This field is also present in the \fIxcb_generic_reply_t\fP and can be used to tell replies apart from each other.
+.IP \fIsequence\fP 1i
+The sequence number of the last request processed by the X11 server.
+.IP \fIlength\fP 1i
+The length of the reply, in words (a word is 4 bytes).
+.IP \fInames_len\fP 1i
+The number of font names.
 .SH DESCRIPTION
 Gets a list of available font names which match the given \fIpattern\fP.
 .SH RETURN VALUE
